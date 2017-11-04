@@ -36,14 +36,14 @@ function offlineButton() {
   $('.success').show();
   $('.success').css('color', 'red')
   $('.center i').css('color', 'red');
-}
 
-window.addEventListener("online", onlineButton);
+  window.addEventListener("online", onlineButton);
 
-function onlineButton() {
-  $('.success').css('color', 'green');
-  $('.success').click(function() {
-      $('.container').load('/puzzle/home/');
-  });
+  function onlineButton() {
+    $('.success').css('color', 'green');
+    $('.success').click(function() {
+        $('.container').load('/puzzle/home/');
+    });
+  }
 }
 </script>
