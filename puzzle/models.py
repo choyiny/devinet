@@ -17,8 +17,11 @@ class Stage(models.Model):
     # a stage has 1 level
     level = models.ForeignKey(Level)
 
-    # name of stage
-    name = models.TextField()
+    def get_stage_url(self):
+        return "stage_{}.html".format(self.id)
 
     def __str__(self):
-        return self.name
+        """
+        String representation for a stage. Intended for admin site.
+        """
+        return "{}: Stage {}".format(self.level, self.id)
