@@ -12,3 +12,8 @@ def view_stage(request, stage_id):
     template = loader.get_template(Stage.objects.get(pk=stage_id).get_stage_url)
     context = {}
     return HttpResponse(template.render(context, request))
+
+def view_home(request, user_id):
+    template = loader.get_template('home.html')
+    context = {}
+    return HttpResponse(template.render(context, request))
