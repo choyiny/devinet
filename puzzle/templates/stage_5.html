@@ -1,20 +1,20 @@
 <style>
-.success {
+  .success {
     position: absolute;
-    left: 40px;
-    background-color: white;
+    background-color: green;
     height: 50px;
     width: 50px;
-    top:50px;
     border-radius: 50px;
-    display: none;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 </style>
 <span class="success"></span>
 <script type="text/javascript">
     $(document).ready(function() {
-        document.cookie = 'stage_5' + Date.now() + '=asdf; path=/'
+        document.cookie = 'stage_5' + Date.now() + '=asdf; path=/';
         if (document.cookie.split('stage_5').length > 2) {
             $('.success').show();
         }
