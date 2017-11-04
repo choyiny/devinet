@@ -8,17 +8,29 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-}
+    z-index: 100;
+  }
 
+  .fa-refresh {
+    cursor: wait;
+  }
 </style>
-<span class="success"></span>
+<span class="success" style="display:none"></span>
+<div class="center">
+  <i class="fa fa-refresh" aria-hidden="true"></i>
+</div>
 <script type="text/javascript">
     $(document).ready(function() {
-        document.cookie = 'stage_5' + Date.now() + '=asdf; path=/';
-        if (document.cookie.split('stage_5').length > 2) {
-            $('.success').show();
-        }
+      $('.fa-refresh').click(function() {
+        var d = new Date();
+        d = d.setMinutes(d.getMinutes() + 0.5);
+          document.cookie = 'stage_5' + Date.now() + '=;expires=+'+ d +'; path=/';
+          if (document.cookie.split('stage_5').length > 2) {
+              $('.success').show();
+          }
+      });
     });
+
 </script>
 <script>
 

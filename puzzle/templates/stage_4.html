@@ -1,11 +1,11 @@
 <style>
 .success {
     position: absolute;
-    left: 40px;
+    left: 290px;
     background-color: white;
     height: 50px;
     width: 50px;
-    top:50px;
+    top: 266px;
     border-radius: 50px;
 }
 
@@ -14,7 +14,33 @@
     background-color: green;
   }
 }
+
+.box1, .box2 {
+  position: absolute;
+  height: 300px;
+  width: 200px;
+  border-radius: 5px;
+  border: solid 1px #134017;
+}
+
+.box1 {
+  background-color: #0E4E36;
+  opacity: 0.5;
+  right: 25%;
+  bottom: 338px;
+}
+
+.box2 {
+  background-color: #1F6A43;
+  height: 100px;
+  width: 70px;
+  opacity: 0.7;
+  right: 30%;
+  bottom: 390px;
+}
 </style>
+<div class="box1"></div>
+<div class="box2"></div>
 <span class="success"></span>
 <script>
     $('.success').click(function() {
