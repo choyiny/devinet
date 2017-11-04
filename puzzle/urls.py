@@ -5,5 +5,5 @@ from puzzle import views
 app_name = 'profiles'
 urlpatterns = [
     url(r'^$', views.view_home, name='home'),
-    url(r'^(?P<stage_id>[0-9]+)/$', views.view_stage, name='view_stage'),
+    url(r'^(?P<pk>[0-9]+)/$', views.view_stage, name='view_stage'),
 ]
