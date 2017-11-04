@@ -1,5 +1,186 @@
-{% extends '_layouts/base.html' %}
+<style>
+    .up,.down,.left,.right {
+        position: absolute;
+        border: 4px solid yellow;
+        border-radius: 10px;
+        height: 60px;
+        width: 60px;
+    }
 
-{% block content %}
-Stage 1
-{% endblock content %}
+    .up {
+        top: 225px;
+        left: 640px;
+    }
+
+    .up-box {
+        background-color: yellow;
+        width: 60px;
+        bottom: 0;
+        position: absolute;
+    }
+
+    .down {
+        top: 419px;
+        left: 640px;
+    }
+
+    .down-box {
+        background-color: yellow;
+        width: 60px;
+        position: absolute;
+        top: 0;
+    }
+
+    .left {
+       top: 318px;
+        left: 529px;
+    }
+
+    .left-box {
+        background-color: yellow;
+        height: 60px;
+        position: absolute;
+        right: 0;
+    }
+
+    .right {
+        top: 318px;
+        left: 746px;
+    }
+
+    .right-box {
+        background-color: yellow;
+        height: 60px;
+        position: absolute;
+        left: 0;
+    }
+
+    .success {
+        position: absolute;
+        top: 328px;
+        left: 646px;
+        background-color: green;
+        height: 50px;
+        width: 50px;
+        border-radius: 50px;
+    }
+</style>
+<div class="up">
+    <div class="up-box"></div>
+</div>
+<div class="down">
+    <div class="down-box"></div>
+</div>
+<div class="left">
+    <div class="left-box"></div>
+</div>
+<div class="right">
+    <div class="right-box"></div>
+</div>
+<div class="success" style="display:none">
+
+</div>
+
+<script>
+$(document).ready(function() {
+    loop();
+    var upDownComplete = false;
+    var leftRightComplete = false;
+
+    // infinite loop
+    function loop() {
+        requestAnimationFrame(loop);
+
+        if ($('.up-box').height() >= 59 && $('.down-box').height() >= 59) {
+            upDownComplete = true;
+        }
+
+        if ($('.left-box').width() >= 59 && $('.right-box').width() >= 59) {
+            leftRightComplete = true;
+        }
+
+        if ($('.down-box').height() > 0 && !upDownComplete) {
+            $('.down-box').height("-=0.03");
+        }
+        if ($('.up-box').height() > 0 && !upDownComplete) {
+            $('.up-box').height("-=0.03");
+        }
+        if ($('.left-box').width() > 0 && !leftRightComplete) {
+            $('.left-box').width("-=0.03");
+        }
+        if ($('.right-box').width() > 0 && !leftRightComplete) {
+            $('.right-box').width("-=0.03");
+        }
+
+        // if width and heights are matched
+        if ($('.down-box').height() >= 59 && $('.left-box').width() >= 59 &&
+            $('.up-box').height() >= 59 && $('.right-box').width() >= 59) {
+            // show success hexagon
+            $('.success').show();
+        } else {
+            // hide success hexagon
+            $('.success').hide();
+        }
+    }
+});
+
+    var map = {37: false, 38: false, 39: false, 40: false};
+    $(document).keydown(function(e) {
+        if (e.keyCode in map) {
+            map[e.keyCode] = true;
+
+            // down and up pressed at same time
+            if (map[40] && map[38]) {
+                event.preventDefault();
+                if ($('.down-box').height() < 60 && $('.up-box').height() < 60) {
+                    $('.down-box').height("+=1");
+                    $('.up-box').height("+=1");
+                }
+            // down button
+            } else if (map[40]) {
+                event.preventDefault();
+                if ($('.down-box').height() < 60) {
+                    $('.down-box').height("+=2");
+                }
+            // up button
+            }
+            else if (map[38]) {
+                event.preventDefault();
+                if ($('.up-box').height() < 60) {
+                    $('.up-box').height("+=2");
+                }
+            }
+
+            if (map[37] && map[39]) {
+                event.preventDefault();
+                if ($('.left-box').width() < 60 && $('.right-box').width() < 60) {
+                    $('.left-box').width("+=1");
+                    $('.right-box').width("+=1");
+                }
+            // left button
+            } else if (map[37]) {
+                event.preventDefault();
+                if ($('.left-box').width() < 60) {
+                    $('.left-box').width("+=2");
+                }
+            // right button
+            } else if (map[39]) {
+                event.preventDefault();
+                if ($('.right-box').width() < 60) {
+                    $('.right-box').width("+=2");
+                }
+            }
+        }
+    });
+
+    $(document).keyup(function(e) {
+        if (e.keyCode in map) {
+            map[e.keyCode] = false;
+        }
+    });
+</script>
+<script>
+    $('.success').click(function() {
+        $('.container').load('/puzzle/home/');
+    });
+</script>
