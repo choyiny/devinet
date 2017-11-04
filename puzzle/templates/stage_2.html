@@ -1,0 +1,62 @@
+{% block content %}
+<style>
+  .mouse {
+    position:absolute;
+    width: 60px;
+    height: 60px;
+    background-color: red;
+    border-radius: 30px;
+  }
+
+  .answer {
+    position:absolute;
+    width: 60px;
+    height: 60px;
+    border: 5px solid red;
+    border-radius: 30px;
+  }
+
+  .focusArea {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+<div class="focusArea">
+<div class="mouse"></div>
+<div class="answer"></div>
+  <div id="win-message" style="display:none">COmplete</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+  function loop() {
+    requestAnimationFrame(loop);
+
+  }
+  $('.focusArea').mousemove(function(e) {
+    x=event.clientX;
+    y=event.clientY;
+    width =   $('.focusArea').width();
+    height = $('.focusArea').height();
+    console.log(x +' '+ y);
+    $('.mouse').css({
+       left:  e.pageX,
+       top:   e.pageY
+    });
+    $('.answer').css({
+       left:  width-e.pageX,
+       top:   height-e.pageY
+    });
+    if ((x > width/2 - 30) && (x < width/2 + 30))
+    {
+      if ((y > height/2 - 30) && (y < height/2 + 30))
+      {
+        $('#win-message').attr('style', 'display:block');
+      }
+    }
+  });
+
+  loop();
+</script>
+{% endblock content %}
