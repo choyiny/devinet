@@ -18,7 +18,7 @@ class Stage(models.Model):
     level = models.ForeignKey(Level)
 
     # name of stage
-    name = models.Textfield()
+    name = models.TextField()
 
     def __str__(self):
         return self.name
