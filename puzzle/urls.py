@@ -2,7 +2,7 @@ from django.conf.urls import url
 
 from puzzle import views
 
-app_name = 'profiles'
+app_name = 'puzzle'
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^home/', views.view_home, name='home'),

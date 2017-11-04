@@ -1,4 +1,8 @@
 <style>
+
+  body{
+    cursor: wait;
+  }
   .success {
     position: absolute;
     background-color: #30BF3C;
@@ -10,15 +14,8 @@
     transform: translate(-50%, -50%);
     z-index: 100;
   }
-
-  .fa-refresh {
-    cursor: wait;
-  }
 </style>
 <span class="success" style="display:none"></span>
-<div class="center">
-  <i class="fa fa-refresh" aria-hidden="true"></i>
-</div>
 <script type="text/javascript">
     $(document).ready(function() {
       $('.fa-refresh').click(function() {

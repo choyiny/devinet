@@ -1,18 +1,12 @@
 <style>
-.success {
+.circle {
     position: absolute;
     left: 290px;
     background-color: white;
     height: 50px;
     width: 50px;
-    top: 266px;
+    bottom: 80%;
     border-radius: 50px;
-}
-
-@media (max-width: 500px) {
-  .success {
-    background-color: green;
-  }
 }
 
 .box1, .box2 {
@@ -41,9 +35,26 @@
 </style>
 <div class="box1"></div>
 <div class="box2"></div>
-<span class="success"></span>
+<span class="circle"></span>
 <script>
+loop();
+
+function loop() {
+  requestAnimationFrame(loop);
+  var width = $(window).width();
+  var height = $(window).height();
+  if ((width > 490 && width < 510) && (height > 510 && height < 520)) {
+    $('.circle').css('background-color', 'green');
+    $('.circle').addClass('success');
+
     $('.success').click(function() {
-        $('.container').load('/puzzle/home/');
+      $('.container').load('/puzzle/home/');
     });
+  }
+  else {
+    $('.success').css('background-color', 'white');
+    $('.circle').removeClass('success');
+  }
+}
+
 </script>
