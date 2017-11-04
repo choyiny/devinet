@@ -2,20 +2,22 @@
 <style>
   .mouse {
     position: absolute;
-    transform: translate(-30px, -30px);
-    width: 60px;
-    height: 60px;
-    background-color: red;
-    border-radius: 30px;
+    transform: translate(65%, 87%);
+    width: 800px;
+    height: 800px;
+    background-color: rgba(20,82,26, 0.5);
+    border-radius: 400px;
+    opacity: 50%;
   }
 
   .answer {
-    transform: translate(-30px, -30px);
+    transform: translate(65%, 87%);
     position: absolute;
-    width: 60px;
-    height: 60px;
-    border: 5px solid red;
-    border-radius: 30px;
+    width: 800px;
+    height: 800px;
+    background-color: rgba(20,82,26, 0.5);
+    opacity: 50%;
+    border-radius: 400px;
   }
 
   .focusArea {
@@ -27,19 +29,18 @@
   }
   .success {
     position: absolute;
-    background-color: green;
-    height: 50px;
-    width: 50px;
-    border-radius: 50px;
+    color: #37DE46;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    font-size: 40px;
+    opacity: 0%;
   }
 </style>
 <div class="focusArea">
   <div class="mouse"></div>
   <div class="answer"></div>
-  <div class="btn btn-success success" style="display:none"></div>
+  <a><span class="success">Devinet</span></a>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -48,24 +49,25 @@
     requestAnimationFrame(loop);
   }
   $('.focusArea').mousemove(function(e) {
-    x=event.clientX;
-    y=event.clientY;
-    width =   $('.focusArea').width();
+    var offset = 500
+    var x=event.clientX + offset;
+    var y=event.clientY + offset;
+    width = $('.focusArea').width();
     height = $('.focusArea').height();
     console.log(x +' '+ y);
     $('.mouse').css({
-       left:  e.pageX,
-       top:   e.pageY
+       left:  e.pageX*x*2/width,
+       top:   e.pageY*y*2/height
     });
     $('.answer').css({
-       left:  width-e.pageX,
-       top:   height-e.pageY
+       left:  width-e.pageX*x*2/width,
+       top:   height-e.pageY*y*2/height
     });
-    if ((x > width/2 - 15) && (x < width/2 + 15))
+    if ((x + offset > width/2 - 15) && (x + offset < width/2 + 15))
     {
-      if ((y > height/2 - 15) && (y < height/2 + 15))
+      if ((y  + offset> height/2 - 15) && (y + offset < height/2 + 15))
       {
-        $('.success').show();
+        $('.success').animate({opacity: 100});
       }
     }
   });
