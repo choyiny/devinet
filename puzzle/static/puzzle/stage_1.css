@@ -1,0 +1,65 @@
+.up,.down,.left,.right {
+    position: absolute;
+    border: 4px solid yellow;
+    border-radius: 10px;
+    height: 60px;
+    width: 60px;
+}
+
+.up {
+    top: 225px;
+    left: 640px;
+}
+
+.up-box {
+    background-color: yellow;
+    width: 60px;
+    bottom: 0;
+    position: absolute;
+}
+
+.down {
+    top: 419px;
+    left: 640px;
+}
+
+.down-box {
+    background-color: yellow;
+    width: 60px;
+    position: absolute;
+    top: 0;
+}
+
+.left {
+   top: 318px;
+    left: 529px;
+}
+
+.left-box {
+    background-color: yellow;
+    height: 60px;
+    position: absolute;
+    right: 0;
+}
+
+.right {
+    top: 318px;
+    left: 746px;
+}
+
+.right-box {
+    background-color: yellow;
+    height: 60px;
+    position: absolute;
+    left: 0;
+}
+
+.success {
+    position: absolute;
+    top: 328px;
+    left: 646px;
+    background-color: green;
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+}

@@ -1,0 +1,23 @@
+<style>
+.success {
+    position: absolute;
+    left: 40px;
+    background-color: white;
+    height: 50px;
+    width: 50px;
+    top:50px;
+    border-radius: 50px;
+}
+
+@media (max-width: 500px) {
+  .success {
+    background-color: green;
+  }
+}
+</style>
+<span class="success"></span>
+<script>
+    $('.success').click(function() {
+        $('.container').load('/puzzle/home/');
+    });
+</script>

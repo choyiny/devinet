@@ -1,0 +1,49 @@
+<style>
+.success {
+    position: absolute;
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%, -60%);
+    background-color: green;
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+}
+
+.center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+.center i {
+  font-size: 30px;
+  color: green;
+}
+</style>
+
+<span class="success" style="display:none"></span>
+<div class="center">
+  <i class="fa fa-wifi" aria-hidden="true"></i>
+</div>
+
+
+<script>
+window.addEventListener("offline", offlineButton);
+
+function offlineButton() {
+  $('.success').show();
+  $('.success').css('color', 'red')
+  $('.center i').css('color', 'red');
+}
+
+window.addEventListener("online", onlineButton);
+
+function onlineButton() {
+  $('.success').css('color', 'green');
+  $('.success').click(function() {
+      $('.container').load('/puzzle/home/');
+  });
+}
+</script>

@@ -1,0 +1,28 @@
+<style>
+.success {
+    position: absolute;
+    left: 40px;
+    background-color: white;
+    height: 50px;
+    width: 50px;
+    top:50px;
+    border-radius: 50px;
+    display: none;
+}
+
+</style>
+<span class="success"></span>
+<script type="text/javascript">
+    $(document).ready(function() {
+        document.cookie = 'stage_5' + Date.now() + '=asdf; path=/'
+        if (document.cookie.split('stage_5').length > 2) {
+            $('.success').show();
+        }
+    });
+</script>
+<script>
+
+    $('.success').click(function() {
+        $('.container').load('/puzzle/home/');
+    });
+</script>
