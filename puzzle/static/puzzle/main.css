@@ -3,4 +3,6 @@ body {
 }
 .container {
     color: white;
+    overflow: hidden;
+    height: 100%;
 }
