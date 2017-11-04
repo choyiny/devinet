@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class Level(models.Model):
     """ Model for a level of the game """
-    users = models.ManyToManyField(User, through='user_level')
+    users = models.ManyToManyField(User, through='UserLevel')
 
     def get_stages(self):
         """ Returns the stages for a specific level """
@@ -16,7 +16,7 @@ class Level(models.Model):
 
 class Stage(models.Model):
     """ Model for a stage of a level """
-    users = models.ManyToManyField(User, through='user_stage')
+    users = models.ManyToManyField(User, through='UserStage')
     # a stage has 1 level
     level = models.ForeignKey(Level)
 
