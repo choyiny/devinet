@@ -1,79 +1,28 @@
-{% block content %}
 <style>
-  .mouse {
-    position: absolute;
-    transform: translate(65%, 87%);
-    width: 800px;
-    height: 800px;
-    background-color: rgba(20,82,26, 0.5);
-    border-radius: 400px;
-    opacity: 50%;
-  }
+.pretend-textbox {
+  height: 40px;
+  width: 300px;
+  border: 1px solid grey;
+  background-color: white;
+}
+.pretend-textbox .pretend-text {
+  font-size: 20px;
+  font-weight: 500;
 
-  .answer {
-    transform: translate(65%, 87%);
-    position: absolute;
-    width: 800px;
-    height: 800px;
-    background-color: rgba(20,82,26, 0.5);
-    opacity: 50%;
-    border-radius: 400px;
-  }
-
-  .focusArea {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-  }
-  .title {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0%;
-  }
+}
 </style>
-{% load static %}
-<div class="focusArea">
-  <div class="mouse"></div>
-  <div class="answer"></div>
-  <span class="title"><img style="width:200px;pointer-events: none;" src="{% static "puzzle/devniet.png" %}"></span>
+
+<div class="center">
+  <div class="pretend-textbox">
+    <span class="pretend-text">RBC is best</span>
+  </div>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script>
-  function loop() {
-    requestAnimationFrame(loop);
+document.onkeydown = function(e) {
+  if ((e.ctrlKey || e.metaKey) && e.key === 'z') {
+    e.preventDefault();
+    $('.pretend-text').html("TD is best");
   }
-  $('.focusArea').mousemove(function(e) {
-    var offset = 500
-    var x=event.clientX + offset;
-    var y=event.clientY + offset;
-    width = $('.focusArea').width();
-    height = $('.focusArea').height();
-    console.log(x +' '+ y);
-    $('.mouse').css({
-       left:  e.pageX*x*2/width,
-       top:   e.pageY*y*2/height
-    });
-    $('.answer').css({
-       left:  width-e.pageX*x*2/width,
-       top:   height-e.pageY*y*2/height
-    });
-    if ((x + offset > width/2 - 15) && (x + offset < width/2 + 15))
-    {
-      if ((y  + offset> height/2 - 15) && (y + offset < height/2 + 15))
-      {
-        $('.success').animate({opacity: 100});
-      }
-    }
-  });
-
-  $('.success').click(function() {
-        $('.container').load('/puzzle/list/');
-    });
-  loop();
+}
 </script>
-{% endblock content %}
