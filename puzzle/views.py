@@ -14,6 +14,7 @@ def view_stage(request, pk):
     context = {}
     return HttpResponse(template.render(context, request))
 
+
 def view_home(request, user_id):
     template = loader.get_template('home.html')
     context = {}
