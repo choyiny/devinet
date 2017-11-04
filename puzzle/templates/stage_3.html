@@ -71,10 +71,7 @@ $(document).ready(function() {
 			});
 			//reset on mouse move
 			$('.container').mousemove(function(e) {
-				// only reset if not complete
-				if (length < maxLength) {
-					length = 0;
-				}
+				length = 0;
 			});
 		} else {
 			finish();
