@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 class Level(models.Model):
     """ Model for a level of the game """
     users = models.ManyToManyField(User, through='user_level')
+
     def get_stages(self):
         """ Returns the stages for a specific level """
         return self.stage_set.objects.all()
@@ -19,18 +20,21 @@ class Stage(models.Model):
     # a stage has 1 level
     level = models.ForeignKey(Level)
 
-    # name of stage
-    name = models.TextField()
+    def get_stage_url(self):
+        return "stage_{}.html".format(self.id)
 
     def __str__(self):
-        return self.name
+        """
+        String representation for a stage. Intended for admin site.
+        """
+        return "{}: Stage {}".format(self.level, self.id)
 
 
-class user_level(models.Model):
+class UserLevel(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     level = models.ForeignKey(Level, on_delete=models.CASCADE)
 
 
-class user_stage(models.Model):
+class UserStage(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     stage = models.ForeignKey(Stage, on_delete=models.CASCADE)
