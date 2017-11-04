@@ -27,6 +27,12 @@ def index(request):
 
 def view_home(request):
     template = 'home.html'
+    context = {}
+
+    return render_to_response(template, context=context)
+
+def view_list(request):
+    template = 'list.html'
     context = {'levels': Level.objects.all()}
 
     return render_to_response(template, context=context)

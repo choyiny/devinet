@@ -27,20 +27,19 @@
     left: 0;
     top: 0;
   }
-  .success {
+  .title {
     position: absolute;
-    color: #37DE46;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    font-size: 40px;
     opacity: 0%;
   }
 </style>
+{% load static %}
 <div class="focusArea">
   <div class="mouse"></div>
   <div class="answer"></div>
-  <a><span class="success">Devinet</span></a>
+  <span class="title"><img style="width:200px;pointer-events: none;" src="{% static "puzzle/devniet.png" %}"></span>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -73,7 +72,7 @@
   });
 
   $('.success').click(function() {
-        $('.container').load('/puzzle/home/');
+        $('.container').load('/puzzle/list/');
     });
   loop();
 </script>

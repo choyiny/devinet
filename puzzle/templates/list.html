@@ -1,0 +1,38 @@
+<style type="text/css">
+	.card, .list-group-item {
+		background-color: #37DE46
+	}
+
+	.card-title, .card-header{
+		color: white;
+	}
+
+	.btn-primary {
+		background-color: #24912E;
+		border-color: #1F7D27;
+	}
+</style>
+<div class='card text-center'>
+	<div class="card-header">
+		<h1 style="color: white;">Devinet</h1>
+  	</div>
+  	<ul class="list-group list-group-flush">
+		{% for level in levels %}
+  		<li class="list-group-item">
+  			<h4 class="card-title">{{level}}</h4>
+  			{% for stage in level.stage_set.all %}
+	      		<a href="#" class="stage btn btn-primary" id="{{stage.id}}">{{stage}}</a>
+	    	{% endfor %}
+  		</li>
+		{% endfor %}
+  	</ul>
+</div>
+{% block js %}
+<script>
+// loads the stage id
+$('.stage').click(function() {
+    var stage_id = $(this).attr('id');
+    $('.container').load('/puzzle/stage/', {'pk': stage_id});
+});
+</script>
+{% endblock js %}
