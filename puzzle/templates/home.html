@@ -5,7 +5,7 @@
   <li>{{level}}
     <ul>
     {% for stage in level.stage_set.all %}
-      <li>{{stage}}</li>
+      <li><a href="/puzzle/{{stage.pk}}/">{{stage}}</a></li>
     {% endfor %}
     </ul>
   </li>
