@@ -25,7 +25,11 @@ SECRET_KEY = '70cxtfoj!3s!*4q*0m-6ht@_bhh2@@c9^n-ok36x^ktf8+622n'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [u'devinet.choy.in']
+ALLOWED_HOSTS = [
+    u'devinet.choy.in',
+    u'localhost',
+    u'127.0.0.1'
+]
 
 
 # Application definition
