@@ -1,5 +1,6 @@
 from django.template import loader
 from django.http import HttpResponse
+from .models import Level
 
 from puzzle.models import Stage
 
@@ -13,7 +14,8 @@ def view_stage(request, stage_id):
     context = {}
     return HttpResponse(template.render(context, request))
 
-def view_home(request, user_id):
+def view_home(request):
     template = loader.get_template('home.html')
-    context = {}
+    context = {'levels':Level.objects.all()}
+
     return HttpResponse(template.render(context, request))

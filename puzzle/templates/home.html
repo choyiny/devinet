@@ -5,6 +5,18 @@
   <title>Title</title>
 </head>
 <body>
-{% block content %}{% endblock %}
+{% block content %}
+<ul>
+{% for level in levels %}
+  <li>{{level}}
+    <ul>
+    {% for stage in level.stage_set.all %}
+      <li>{{stage}}</li>
+    {% endfor %}
+    </ul>
+  </li>
+{% endfor %}
+</ul>
+{% endblock %}
 </body>
 </html>
