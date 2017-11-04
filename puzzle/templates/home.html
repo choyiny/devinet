@@ -1,14 +1,18 @@
-<ul>
-{% for level in levels %}
-  <li>{{level}}
-    <ul>
-    {% for stage in level.stage_set.all %}
-      <li class="stage" id="{{stage.id}}">{{stage}}</li>
-    {% endfor %}
-    </ul>
-  </li>
-{% endfor %}
-</ul>
+<div class='card text-center'>
+	<div class="card-header">
+		<h1>Devinet</h1>
+  	</div>
+  	<ul class="list-group list-group-flush">
+		{% for level in levels %}
+  		<li class="list-group-item">
+  			<h4 class="card-title">{{level}}</h4>
+  			{% for stage in level.stage_set.all %}
+	      		<a href="#" class="stage btn btn-primary" id="{{stage.id}}">{{stage}}</a>
+	    	{% endfor %}
+  		</li>
+		{% endfor %}
+  	</ul>
+</div>
 {% block js %}
 <script>
 // loads the stage id

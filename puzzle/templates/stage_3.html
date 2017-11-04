@@ -1,5 +1,100 @@
-{% extends '_layouts/base.html' %}
+<style type="text/css">
+.centered {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
 
-{% block content %}
-Stage 3
-{% endblock content %}
+  .success {
+    position: absolute;
+    background-color: green;
+    display: none;
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+.box {
+	width: 50%;
+	height: 60px;
+	border: 5px solid red;
+	border-radius: 4px;
+}
+.container {
+	margin: 0px;
+}
+
+.progress {
+	width: 0;
+	height: 50px;
+}
+
+.fill-green {
+	background-color: green;
+}
+
+.fill-red {
+	background-color: red;
+}
+
+.fill-blue {
+	background-color: blue;
+}
+
+.focusArea {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+</style>
+<div class="focusArea">
+	<div class="box fill-red centered"></div>
+	<div class="progress fill-blue centered"></div>
+	<div class='success centered'></div>
+</div>
+<script>
+$(document).ready(function() {
+	var maxLength = $('.box').width();
+	var length = 0
+
+	function update() {
+		if (length < maxLength) {
+			//increase green rect
+			length += maxLength%7;
+			$('.progress').css({
+				width: length,
+				height: 60
+			});
+			//reset on mouse move
+			$('.container').mousemove(function(e) {
+				// only reset if not complete
+				if (length < maxLength) {
+					length = 0;
+				}
+			});
+		} else {
+			finish();
+		}
+	}
+	// infinite loop
+    function loop() {
+        requestAnimationFrame(loop);
+        update();
+    }
+
+    // complete challenge
+    function finish() {
+    	$('.success').show();
+    }
+    loop()
+});
+</script>
+<script type="text/javascript">
+$('.success').click(function() {
+    $('.container').load('/puzzle/home/');
+});
+</script>
