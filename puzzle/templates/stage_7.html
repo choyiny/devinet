@@ -8,30 +8,25 @@
 
   .success {
     position: absolute;
-    background-color: green;
-    display: none;
-    height: 50px;
-    width: 50px;
-    border-radius: 50px;
+    background-color: #B9CF54;
+    height: 0px;
+    width: 0px;
+    border-radius: 500px;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
   }
 
 .box {
-	width: 50%;
-	height: 60px;
-	border: 5px solid red;
-	border-radius: 4px;
+	width: 500px;
+	height: 500px;
+	border: 4px solid #B9CF54;
+	border-radius: 500px;
 }
 .container {
 	margin: 0px;
 }
 
-.progress {
-	width: 0;
-	height: 50px;
-}
 
 .fill-green {
 	background-color: green;
@@ -50,10 +45,11 @@
 	width: 100%;
 	height: 100%;
 }
+
 </style>
 <div class="focusArea">
-	<div class="box fill-red centered"></div>
-	<div class="progress fill-blue centered"></div>
+	<div class="box centered"></div>
+	<div class="progress centered"></div>
 	<div class='success centered'></div>
 </div>
 <script>
@@ -68,14 +64,16 @@ $(document).ready(function() {
 			if (length > 0 ){
 				length -= 5;
 			}
-			$('.progress').css({
+			$('.success').css({
 				width: length,
-				height: 60
+				height: length,
+				borderRadius: length,
+				backgroundColor: '#B9CF54'
 			});
-			//reset on mouse move
+			// reset on mouse move
 			$('.container').mousemove(function(e) {
 				// only reset if not complete
-				if (length < maxLength) {
+				if (length <= maxLength) {
 					length += 0.05;
 				}
 			});
@@ -91,8 +89,10 @@ $(document).ready(function() {
 
     // complete challenge
     function finish() {
-    	$('.success').show();
     	completed = true;
+    	$('.success').css({
+				backgroundColor: '#63A824'
+			});
     }
     loop()
 });
@@ -101,6 +101,9 @@ $(document).ready(function() {
 $('.success').click(function() {
 	if (completed) {
 		$('.container').load('/puzzle/stage/stagecomplete/', {'pkid':{{pkid}}});
+		$('.success').css({
+    		backgroundColor: '#B9CF54'
+    	});
 	}
 });
 </script>
