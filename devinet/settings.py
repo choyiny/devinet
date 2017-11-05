@@ -118,6 +118,7 @@ SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'email']
 
 SOCIAL_AUTH_FACEBOOK_KEY = config('SOCIAL_AUTH_FACEBOOK_KEY')
 SOCIAL_AUTH_FACEBOOK_SECRET = config('SOCIAL_AUTH_FACEBOOK_SECRET')  # App Secret
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/puzzle/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/

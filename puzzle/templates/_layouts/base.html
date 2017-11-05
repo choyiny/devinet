@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>{% block title %}Devinet{% endblock title %}</title>
     {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{{STATIC_URL}}/favicon.png"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'puzzle/main.css' %}" />
@@ -20,12 +21,19 @@
       .login-frame {
         position: absolute;
         bottom: 20px;
-        left: 300px;
+        left: 14px;
+      }
+
+      .login-frame a {
+        color: white;
       }
 
       .go-back button {
         opacity: 0.6;
         cursor: pointer;
+      }
+      .fa-facebook {
+        font-size: 32px;
       }
     </style>
     {% block css %}{% endblock css %}
@@ -33,14 +41,13 @@
 <body>
     <div class="container">
     </div>
+    {% if not request.user.is_authenticated %}
     <div class="login-frame">
-      <a class="btn btn-lg btn-default" href="{% url 'social:begin' 'facebook' %}">Facebook</a>
+      <a class="btn btn-lg btn-default" href="{% url 'social:begin' 'facebook' %}"><span class="fa fa-facebook"></span></a>
     </div>
+    {% endif %}
     <div class="go-back" style="display:none">
       <button class="back-to-main btn btn-lg btn-default">Back to Main</button>
-    </div>
-    <div class="stage-complete" style="display:none">
-      <h1>Stage Completed.</h1>
     </div>
 </body>
 </html>
