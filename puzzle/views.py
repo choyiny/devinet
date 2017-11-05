@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404
 
 from .models import Level
 
-from puzzle.models import Stage, UserStage
+from puzzle.models import Stage, UserStage, UserLevel
 
 
 @csrf_exempt
@@ -18,7 +18,11 @@ def view_stage(request):
 
     template = Stage.objects.get(pk=request.POST['pk']).get_stage_url()
     context = {'pkid':request.POST['pk']}
-    return render_to_response(template, context=context)
+    # render the stage if user has permission
+    if request.POST['pk'] in request.user.user_level_set:
+        return render_to_response(template, context=context)
+    else:
+        raise Http403("You cannot access this stage yet")
 
 
 def index(request):
@@ -34,6 +38,10 @@ def view_home(request):
 
 @csrf_exempt
 def view_list(request):
+    # give user access to level 1 if they cannot
+    if len(request.user.level_set.all()) == 0:
+        UserLevel.objects.create(user=request.user, level=Level.objects.get(pk=1))
+
     template = 'list.html'
     user = request.user
     unlocked_levels = [x.id for x in user.level_set.all()]
