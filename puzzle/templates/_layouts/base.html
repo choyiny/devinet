@@ -27,8 +27,11 @@
 <body>
     <div class="container">
     </div>
-    <div class="go-back">
+    <div class="go-back" style="display:none">
       <button class="back-to-main btn btn-lg btn-default">Back to Main</button>
+    </div>
+    <div class="stage-complete" style="display:none">
+      <h1>Stage Completed.</h1>
     </div>
 </body>
 </html>
@@ -40,7 +43,9 @@
 $(document).ready(function() {
   $('.go-back .back-to-main').click(function() {
     // loads container with home page without any changes
-    $('.container').load('/puzzle/list/');
+    $('.container').load('/puzzle/list/', function() {
+      $('.go-back').hide();
+    });
   });
 });
 </script>
