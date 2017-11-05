@@ -23,6 +23,8 @@
 			border-radius: 50px;
 			opacity: 1;
 			z-index: 10;
+			cursor: pointer;
+			background-color: transparent;
 	}
 
 	.box.level1 {
@@ -35,7 +37,7 @@
 	}
 
 	.box.level3 {
-		width: 100px;
+		width: 60px;
 		left: 194px;
     top: 61px;
 	}
@@ -51,15 +53,68 @@
 		top: 240px;
 	}
 
-	.box.disable {
-		background-color: grey;
-		opacity: 0.2;
+	.box.level6 {
+		top: 60px;
+    left: 257px;
+	}
+
+	.box.level7 {
+		top: 121px;
+		left: 385px;
+	}
+
+	.box.level8 {
+		top: 181px;
+		left: 322px;
+		width: 124px;
+	}
+
+	.box.disable button {
+		opacity: 0.3;
+		cursor: default;
 	}
 
 	.remove-border {
 		margin: 0;
 		padding: 0;
 	}
+
+	.box.level1 button {
+		border: 4px solid green;
+	}
+
+	.box.level2 button {
+		border: 4px solid green;
+	}
+
+	.box.level3 button {
+		border: 4px solid green;
+	}
+
+	.box.level4 button {
+		border: 4px solid green;
+	}
+
+	.box.level5 button {
+		border: 4px solid green;
+	}
+
+	.box.level6 button {
+		border: 4px solid green;
+	}
+
+	.box.level7 button {
+		border: 4px solid green;
+	}
+
+	.box.level8 button {
+		border: 4px solid green;
+	}
+
+	.box .complete {
+		background-color: white;
+	}
+
 </style>
 {% load puzzle_extras %}
 <div class="row levels">
@@ -92,6 +147,20 @@
 			<button class="btn btn-default stage" id="5"></button>
 			<button class="btn btn-default stage" id="5"></button>
 		</div>
+		<div class="box level6 {% if not 6 in unlocked_levels %} disable {% endif %}">
+			<button class="btn btn-default stage" id="4"></button>
+			<button class="btn btn-default stage" id="5"></button>
+			<button class="btn btn-default stage" id="5"></button>
+		</div>
+		<div class="box level7 {% if not 7 in unlocked_levels %} disable {% endif %}">
+			<button class="btn btn-default stage" id="4"></button>
+			<button class="btn btn-default stage" id="5"></button>
+			<button class="btn btn-default stage" id="5"></button>
+		</div>
+		<div class="box level8 {% if not 8 in unlocked_levels %} disable {% endif %}">
+			<button class="btn btn-default stage" id="4"></button>
+			<button class="btn btn-default stage" id="5"></button>
+		</div>
 	</div>
 	<div class="col-md-2 remove-border"></div>
 </div>
@@ -99,8 +168,10 @@
 <script>
 // loads the stage id
 $('.stage').click(function() {
-    var stage_id = $(this).attr('id');
-    $('.container').load('/puzzle/stage/', {'pk': stage_id});
+	if (!($(this).parent().hasClass("disable"))) {
+		var stage_id = $(this).attr('id');
+		$('.container').load('/puzzle/stage/', {'pk': stage_id});
+	}
 });
 </script>
 {% endblock js %}
