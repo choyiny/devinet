@@ -50,7 +50,7 @@ function loop() {
     $('.container').load('/puzzle/list/');
 
     $('.success').click(function() {
-      $('.container').load('/puzzle/list/');
+      $('.container').load('/puzzle/completed_stages/', {'pk':{{pkid}}});
     });
   }
   else {
