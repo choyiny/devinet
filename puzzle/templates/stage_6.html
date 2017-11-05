@@ -4,36 +4,44 @@
     left: 50%;
     top: 60%;
     transform: translate(-50%, -60%);
-    background-color: green;
     height: 50px;
     width: 50px;
+    height: 50px;
     border-radius: 50px;
+    opacity: 1;
+    z-index: 10;
+    border: 4px solid #B0B931;
+    background-color: transparent;
 }
 </style>
 
-<span class="success" style="display:none"></span>
+<span class="success"></span>
 <div class="center">
-  <i class="fa fa-wifi" aria-hidden="true"></i>
+  <i class="fa fa-wifi" aria-hidden="true" style="color: #b9b9b9"></i>
 </div>
 
 
 <script>
+var completed = false;
 window.addEventListener("offline", offlineButton);
 
 function offlineButton() {
   $('.success').show();
-  $('.success').css('color', 'red')
-  $('.center i').css('color', 'red');
+  $('.success').css('color', '#464646')
+  $('.center i').css('color', '#464646');
 
   window.addEventListener("online", onlineButton);
 
   function onlineButton() {
-    $('.success').css('color', 'green');
-  $('.container').load('/puzzle/list/');
-
-    $('.success').click(function() {
-        $('.container').load('/puzzle/list/');
-    });
+    $('.success').css('color', '#b9b9b9');
+    completed = true;
+    $('.success').css('background-color', '#B0B931');
   }
 }
+
+$('.success').click(function() {
+  if (completed) {
+    $('.container').load('/puzzle/list/');
+  }
+});
 </script>

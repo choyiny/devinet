@@ -1,6 +1,6 @@
 <style>
 
-  .fa-reload {
+  .fa-recycle {
     cursor: wait;
     z-index: 1000;
   }
@@ -25,20 +25,20 @@
 </style>
 <span class="success"></span>
 <div class="center">
-  <span class="fa fa-reload"></span>
+  <span class="fa fa-recycle"></span>
 </div>
 <script type="text/javascript">
-completed = false;
+  completed = false;
     $(document).ready(function() {
       if (document.cookie.split('stage_5').length > 4) {
         completed = true;
-        $('.fa-reload').hide();
+        $('.fa-recycle').hide();
         $('.container').load('/puzzle/list/');
       } else {
         completed = false;
       }
 
-      $('.fa-reload').click(function() {
+      $('.fa-recycle').click(function() {
         console.log("hi");
         var d = new Date();
         d = d.setMinutes(d.getMinutes() + 0.5);
