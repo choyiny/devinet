@@ -9,8 +9,8 @@
   .success {
     position: absolute;
     background-color: #B9CF54;
-    height: 0px;
-    width: 0px;
+    height: 50px;
+    width: 50px;
     border-radius: 500px;
     left: 50%;
     top: 50%;
@@ -61,7 +61,7 @@ $(document).ready(function() {
 	function update() {
 		if (length <= maxLength) {
 			//increase green rect
-			if (length > 0 ){
+			if (length > 50 ){
 				length -= 5;
 			}
 			$('.success').css({
@@ -74,7 +74,7 @@ $(document).ready(function() {
 			$('.container').mousemove(function(e) {
 				// only reset if not complete
 				if (length <= maxLength) {
-					length += 0.05;
+					length += 0.02;
 				}
 			});
 		} else {
