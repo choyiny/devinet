@@ -27,8 +27,9 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function() {
-      if (document.cookie.split('stage_5').length > 2) {
+      if (document.cookie.split('stage_5').length > 4) {
           $('.success').show();
+          $('.container').load('/puzzle/list/');
       }
 
       $('.fa-recycle').click(function() {
