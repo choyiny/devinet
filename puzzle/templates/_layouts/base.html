@@ -40,7 +40,7 @@
 <body>
     <div class="container">
     </div>
-    {% if request.user.is_authenticated %}
+    {% if not request.user.is_authenticated %}
     <div class="login-frame">
       <a class="btn btn-lg btn-default" href="{% url 'social:begin' 'facebook' %}"><span class="fa fa-facebook"></span></a>
     </div>
