@@ -17,6 +17,12 @@
         left: 20px;
       }
 
+      .login-frame {
+        position: absolute;
+        bottom: 20px;
+        left: 300px;
+      }
+
       .go-back button {
         opacity: 0.6;
         cursor: pointer;
@@ -26,6 +32,9 @@
 </head>
 <body>
     <div class="container">
+    </div>
+    <div class="login-frame">
+      <a class="btn btn-lg btn-default" href="{% url 'social:begin' 'facebook' %}">Facebook</a>
     </div>
     <div class="go-back" style="display:none">
       <button class="back-to-main btn btn-lg btn-default">Back to Main</button>
