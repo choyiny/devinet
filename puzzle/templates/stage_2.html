@@ -2,19 +2,31 @@
 .pretend-textbox {
   height: 40px;
   width: 300px;
-  border: 1px solid grey;
-  background-color: white;
+  display: inline-block;
+  margin-left: 5px;
 }
+
 .pretend-textbox .pretend-text {
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 300;
+  color: white;
+}
 
+.center button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  opacity: 1;
+  z-index: 10;
+  border: 4px solid #B9CF54;
+  background-color: transparent;
 }
 </style>
 
 <div class="center">
+  <button class="btn btn-default"></button>
   <div class="pretend-textbox">
-    <span class="pretend-text">RBC is best</span>
+    <span class="pretend-text">I've made a mistake</span>
   </div>
 </div>
 
@@ -22,7 +34,12 @@
 document.onkeydown = function(e) {
   if ((e.ctrlKey || e.metaKey) && e.key === 'z') {
     e.preventDefault();
-    $('.pretend-text').html("TD is best");
+    $('.pretend-text').html("Didn't choose TD");
+    $('.center button').css("background-color", "#B9CF54");
+
+    $('.center button').click(function() {
+      $('.container').load('/puzzle/list/');
+    });
   }
 }
 </script>

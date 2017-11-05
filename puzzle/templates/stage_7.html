@@ -57,6 +57,7 @@
 	<div class='success centered'></div>
 </div>
 <script>
+var completed = false;
 $(document).ready(function() {
 	var maxLength = $('.box').width();
 	var length = 0
@@ -91,13 +92,15 @@ $(document).ready(function() {
     // complete challenge
     function finish() {
     	$('.success').show();
-    	$('.container').load('/puzzle/list/');
+    	completed = true;
     }
     loop()
 });
 </script>
 <script type="text/javascript">
 $('.success').click(function() {
-    $('.container').load('/puzzle/home/');
+	if (completed) {
+		$('.container').load('/puzzle/list/');
+	}
 });
 </script>

@@ -120,16 +120,24 @@
 			<button class="btn btn-default stage {% if 3 in completed_stages %} complete {% endif %}" id="3"></button>
 		</div>
 		<div class="box level4 {% if not 4 in unlocked_levels %} disable {% endif %}">
+<<<<<<< HEAD
 			<button class="btn btn-default stage {% if 4 in completed_stages %} complete {% endif %}" id="4"></button>
 			<button class="btn btn-default stage {% if 5 in completed_stages %} complete {% endif %}" id="5"></button><br>
 			<button class="btn btn-default stage {% if 6 in completed_stages %} complete {% endif %}" id="6"></button>
 			<button class="btn btn-default stage {% if 7 in completed_stages %} complete {% endif %}" id="7"></button>
+=======
+			<button class="btn btn-default stage" id="0"></button>
+			<button class="btn btn-default stage" id="0"></button><br>
+			<button class="btn btn-default stage" id="0"></button>
+			<button class="btn btn-default stage" id="0"></button>
+>>>>>>> 3c423f294800136e09e338d676b4e4174fd44242
 		</div>
 		<div class="box level2 {% if not 2 in unlocked_levels %} disable {% endif %}">
 			<button class="btn btn-default stage {% if 8 in completed_stages %} complete {% endif %}" id="4"></button>
 			<button class="btn btn-default stage {% if 9 in completed_stages %} complete {% endif %}" id="5"></button>
 		</div>
 		<div class="box level3 {% if not 3 in unlocked_levels %} disable {% endif %}">
+<<<<<<< HEAD
 			<button class="btn btn-default stage {% if 10 in completed_stages %} complete {% endif %}" id="4"></button>
 			<button class="btn btn-default stage {% if 11 in completed_stages %} complete {% endif %}" id="5"></button>
 			<button class="btn btn-default stage {% if 12 in completed_stages %} complete {% endif %}" id="5"></button>
@@ -154,6 +162,32 @@
 		<div class="box level8 {% if not 8 in unlocked_levels %} disable {% endif %}">
 			<button class="btn btn-default stage {% if 24 in completed_stages %} complete {% endif %}" id="4"></button>
 			<button class="btn btn-default stage {% if 25 in completed_stages %} complete {% endif %}" id="5"></button>
+=======
+			<button class="btn btn-default stage" id="6"></button>
+			<button class="btn btn-default stage" id="7"></button>
+			<button class="btn btn-default stage" id="0"></button>
+		</div>
+		<div class="box level5 {% if not 5 in unlocked_levels %} disable {% endif %}">
+			<button class="btn btn-default stage" id="0"></button>
+			<button class="btn btn-default stage" id="0"></button>
+			<button class="btn btn-default stage" id="0"></button>
+			<button class="btn btn-default stage" id="0"></button>
+			<button class="btn btn-default stage" id="0"></button>
+		</div>
+		<div class="box level6 {% if not 6 in unlocked_levels %} disable {% endif %}">
+			<button class="btn btn-default stage" id="0"></button>
+			<button class="btn btn-default stage" id="0"></button>
+			<button class="btn btn-default stage" id="0"></button>
+		</div>
+		<div class="box level7 {% if not 7 in unlocked_levels %} disable {% endif %}">
+			<button class="btn btn-default stage" id="0"></button>
+			<button class="btn btn-default stage" id="0"></button>
+			<button class="btn btn-default stage" id="0"></button>
+		</div>
+		<div class="box level8 {% if not 8 in unlocked_levels %} disable {% endif %}">
+			<button class="btn btn-default stage" id="0"></button>
+			<button class="btn btn-default stage" id="0"></button>
+>>>>>>> 3c423f294800136e09e338d676b4e4174fd44242
 		</div>
 	</div>
 	<div class="col-md-2 remove-border"></div>
@@ -164,7 +198,10 @@
 $('.stage').click(function() {
 	if (!($(this).parent().hasClass("disable"))) {
 		var stage_id = $(this).attr('id');
-		$('.container').load('/puzzle/stage/', {'pk': stage_id});
+		$('.container').load('/puzzle/stage/', {'pk': stage_id}, function() {
+			$('.go-back').show();
+		});
+
 	}
 });
 

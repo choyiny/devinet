@@ -2,17 +2,19 @@
 
   .fa-recycle {
     cursor: wait;
+    z-index: 1000;
   }
   .success {
     position: absolute;
-    background-color: #30BF3C;
-    height: 50px;
     width: 50px;
+    height: 50px;
     border-radius: 50px;
+    opacity: 1;
+    border: 4px solid #93DC5C;
+    background-color: transparent;
     left: 50%;
-    top: 50%;
+    top: 49.6%;
     transform: translate(-50%, -50%);
-    z-index: 100;
   }
 
   .center span {
@@ -21,28 +23,33 @@
   }
 
 </style>
-<span class="success" style="display:none"></span>
+<span class="success"></span>
 <div class="center">
   <span class="fa fa-recycle"></span>
 </div>
 <script type="text/javascript">
+  completed = false;
     $(document).ready(function() {
       if (document.cookie.split('stage_5').length > 4) {
-          $('.success').show();
-          $('.container').load('/puzzle/list/');
+        completed = true;
+        $('.fa-recycle').hide();
+        $('.container').load('/puzzle/list/');
+      } else {
+        completed = false;
       }
 
       $('.fa-recycle').click(function() {
+        console.log("hi");
         var d = new Date();
         d = d.setMinutes(d.getMinutes() + 0.5);
           document.cookie = 'stage_5' + Date.now() + '=;expires=+'+ d +'; path=/';
       });
     });
 
-</script>
-<script>
-
     $('.success').click(function() {
+      if (completed) {
         $('.container').load('/puzzle/list/');
+      }
     });
+
 </script>

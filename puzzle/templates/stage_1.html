@@ -1,7 +1,7 @@
 <style>
 .up,.down,.left,.right {
     position: absolute;
-    border: 4px solid yellow;
+    border: 4px solid rgb(72, 181, 97);
     border-radius: 10px;
     height: 60px;
     width: 60px;
@@ -12,11 +12,14 @@
     left: 640px;
 }
 
+.up-box,.down-box,.left-box,.right-box {
+  position: absolute;
+  background-color: rgb(72, 181, 97);
+}
+
 .up-box {
-    background-color: yellow;
     width: 53px;
     bottom: 0;
-    position: absolute;
 }
 
 .down {
@@ -25,9 +28,7 @@
 }
 
 .down-box {
-    background-color: yellow;
     width: 53px;
-    position: absolute;
     top: 0;
 }
 
@@ -37,9 +38,7 @@
 }
 
 .left-box {
-    background-color: yellow;
     height: 53px;
-    position: absolute;
     right: 0;
 }
 
@@ -49,20 +48,21 @@
 }
 
 .right-box {
-    background-color: yellow;
     height: 53px;
-    position: absolute;
     left: 0;
 }
 
 .success {
-    position: absolute;
-    top: 328px;
-    left: 646px;
-    background-color: green;
-    height: 50px;
-    width: 50px;
-    border-radius: 50px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  opacity: 1;
+  z-index: 10;
+  border: 4px solid #B9CF54;
+  background-color: transparent;
+  position: absolute;
+  top: 323px;
+  left: 643px;
 }
 </style>
 <div class="up">
@@ -77,15 +77,16 @@
 <div class="right">
     <div class="right-box"></div>
 </div>
-<div class="success" style="display:none">
+<button class="success">
 
-</div>
+</button>
 
 <script>
 $(document).ready(function() {
+  var upDownComplete = false;
+  var leftRightComplete = false;
+
     loop();
-    var upDownComplete = false;
-    var leftRightComplete = false;
 
     // infinite loop
     function loop() {
@@ -116,10 +117,14 @@ $(document).ready(function() {
         if ($('.down-box').height() >= 51 && $('.left-box').width() >= 51 &&
             $('.up-box').height() >= 51 && $('.right-box').width() >= 51) {
             // show success hexagon
+<<<<<<< HEAD
             $('.success').show();
         } else {
             // hide success hexagon
             $('.success').hide();
+=======
+            $('.success').css("background-color", "#B9CF54");
+>>>>>>> 3c423f294800136e09e338d676b4e4174fd44242
         }
     }
 });
@@ -178,9 +183,10 @@ $(document).ready(function() {
             map[e.keyCode] = false;
         }
     });
-</script>
-<script>
+
     $('.success').click(function() {
+      if (upDownComplete && leftRightComplete) {
         $('.container').load('/puzzle/stage/stagecomplete/', {'pkid':{{pkid}}});
+      }
     });
 </script>
