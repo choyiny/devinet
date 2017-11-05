@@ -1,0 +1,73 @@
+<style type="text/css">
+
+.success {
+  position: absolute;
+	width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  opacity: 1;
+  z-index: 10;
+  border: 4px solid #B9CF54;
+  background-color: transparent;
+  left: 55%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.before-text, .after-text {
+	font-size: 91px;
+  font-weight: 200;
+  color: white;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.before-text {
+	top: 48.1%;
+	left: 48.2%;
+}
+
+.after-text {
+	top: 48.4%;
+	left: 60.3%;
+}
+
+
+</style>
+<div class="focusArea">
+	<span class="before-text">vajv</span>
+	<div class="success"></div>
+	<span class="after-text">og</span>
+</div>
+<script type="text/javascript">
+var browser_language = ""
+var language;
+var completed = false;
+$.ajax({
+   url: "//ajaxhttpheaders.appspot.com",
+   dataType: 'jsonp',
+   success: function(headers) {
+       language = headers['Accept-Language'].substring(0,2);
+			 browser_language = language;
+   }
+});
+
+function loop() {
+		requestAnimationFrame(loop);
+		if (browser_language === "hm") {
+			completed = true;
+			$('.success').css('background-color', '#B9CF54');
+		} else {
+			completed = false;
+			$('.success').css('background-color', 'transparent');
+		}
+}
+loop();
+
+
+$('.success').click(function() {
+	if (browser_language === "hm") {
+		$('.container').load('/puzzle/stage/stagecomplete/', {'pkid':{{pkid}}});
+	}
+});
+</script>

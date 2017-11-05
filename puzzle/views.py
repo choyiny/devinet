@@ -44,13 +44,15 @@ def view_list(request):
         UserLevel.objects.create(user=user, level=Level.objects.get(pk=1))
 
     # hardcoding unlocking new levels
-    level2 = Level.objects.all().get(pk=2)
-    level1 = Level.objects.all().get(pk=1)
-    # level 2 completed -> unlock level 3
-    if _completed_stages(user, 2) >= len(level2.stage_set.all()):
+
+    # level 3 completed 2 -> unlock level 4
+    if _completed_stages(user, 3) >= 2:
+        _grant_level(user, 4)
+    # level 2 completed all -> unlock level 3
+    elif _completed_stages(user, 2) >= 2:
         _grant_level(user, 3)
-    # level 1 completed -> unlock level 2
-    elif _completed_stages(user, 1) >= len(level1.stage_set.all()):
+    # level 1 completed all -> unlock level 2
+    elif _completed_stages(user, 1) >= 3:
         _grant_level(user, 2)
 
 

@@ -82,12 +82,10 @@
 </button>
 
 <script>
+var upDownComplete = false;
+var leftRightComplete = false;
 $(document).ready(function() {
-  var upDownComplete = false;
-  var leftRightComplete = false;
-
     loop();
-
     // infinite loop
     function loop() {
         requestAnimationFrame(loop);
@@ -117,14 +115,9 @@ $(document).ready(function() {
         if ($('.down-box').height() >= 51 && $('.left-box').width() >= 51 &&
             $('.up-box').height() >= 51 && $('.right-box').width() >= 51) {
             // show success hexagon
-<<<<<<< HEAD
-            $('.success').show();
+          $('.success').css("background-color", "#B9CF54");
         } else {
-            // hide success hexagon
-            $('.success').hide();
-=======
-            $('.success').css("background-color", "#B9CF54");
->>>>>>> 3c423f294800136e09e338d676b4e4174fd44242
+            $('.success').css("background-color", "transparent");
         }
     }
 });
