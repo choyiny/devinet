@@ -35,8 +35,14 @@ def view_home(request):
 
 def view_list(request):
     template = 'list.html'
+    user = request.user
+    unlocked_levels = [x.id for x in user.level_set.all()]
+    completed_stages = [x.id for x in user.stage_set.all()]
     context = {'level1': get_object_or_404(Level, pk=1),
                'level2': get_object_or_404(Level, pk=2),
-               'level3': get_object_or_404(Level, pk=3)}
+               'level3': get_object_or_404(Level, pk=3),
+               'unlocked_levels': unlocked_levels,
+               'completed_stages': completed_stages
+               }
 
     return render_to_response(template, context=context)
