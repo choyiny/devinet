@@ -1,6 +1,6 @@
 <style>
 
-  body{
+  .fa-recycle {
     cursor: wait;
   }
   .success {
@@ -14,17 +14,27 @@
     transform: translate(-50%, -50%);
     z-index: 100;
   }
+
+  .center span {
+  font-size: 30px;
+  color: white;
+  }
+
 </style>
 <span class="success" style="display:none"></span>
+<div class="center">
+  <span class="fa fa-recycle"></span>
+</div>
 <script type="text/javascript">
     $(document).ready(function() {
-      $('.fa-refresh').click(function() {
+      if (document.cookie.split('stage_5').length > 2) {
+          $('.success').show();
+      }
+
+      $('.fa-recycle').click(function() {
         var d = new Date();
         d = d.setMinutes(d.getMinutes() + 0.5);
           document.cookie = 'stage_5' + Date.now() + '=;expires=+'+ d +'; path=/';
-          if (document.cookie.split('stage_5').length > 2) {
-              $('.success').show();
-          }
       });
     });
 

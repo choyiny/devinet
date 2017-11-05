@@ -7,10 +7,6 @@
     width: 60px;
 }
 
-.up-box, .down-box, .left-box, .right-box {
-
-}
-
 .up {
     top: 225px;
     left: 640px;
@@ -18,7 +14,7 @@
 
 .up-box {
     background-color: yellow;
-    width: 60px;
+    width: 53px;
     bottom: 0;
     position: absolute;
 }
@@ -30,7 +26,7 @@
 
 .down-box {
     background-color: yellow;
-    width: 60px;
+    width: 53px;
     position: absolute;
     top: 0;
 }
@@ -42,7 +38,7 @@
 
 .left-box {
     background-color: yellow;
-    height: 60px;
+    height: 53px;
     position: absolute;
     right: 0;
 }
@@ -54,7 +50,7 @@
 
 .right-box {
     background-color: yellow;
-    height: 60px;
+    height: 53px;
     position: absolute;
     left: 0;
 }
@@ -95,30 +91,30 @@ $(document).ready(function() {
     function loop() {
         requestAnimationFrame(loop);
 
-        if ($('.up-box').height() >= 59 && $('.down-box').height() >= 59) {
+        if ($('.up-box').height() >= 51 && $('.down-box').height() >= 51) {
             upDownComplete = true;
         }
 
-        if ($('.left-box').width() >= 59 && $('.right-box').width() >= 59) {
+        if ($('.left-box').width() >= 51 && $('.right-box').width() >= 51) {
             leftRightComplete = true;
         }
 
         if ($('.down-box').height() > 0 && !upDownComplete) {
-            $('.down-box').height("-=0.03");
+            $('.down-box').height("-=0.07");
         }
         if ($('.up-box').height() > 0 && !upDownComplete) {
-            $('.up-box').height("-=0.03");
+            $('.up-box').height("-=0.07");
         }
         if ($('.left-box').width() > 0 && !leftRightComplete) {
-            $('.left-box').width("-=0.03");
+            $('.left-box').width("-=0.07");
         }
         if ($('.right-box').width() > 0 && !leftRightComplete) {
-            $('.right-box').width("-=0.03");
+            $('.right-box').width("-=0.07");
         }
 
         // if width and heights are matched
-        if ($('.down-box').height() >= 59 && $('.left-box').width() >= 59 &&
-            $('.up-box').height() >= 59 && $('.right-box').width() >= 59) {
+        if ($('.down-box').height() >= 51 && $('.left-box').width() >= 51 &&
+            $('.up-box').height() >= 51 && $('.right-box').width() >= 51) {
             // show success hexagon
             $('.success').show();
         } else {
@@ -136,41 +132,41 @@ $(document).ready(function() {
             // down and up pressed at same time
             if (map[40] && map[38]) {
                 event.preventDefault();
-                if ($('.down-box').height() < 60 && $('.up-box').height() < 60) {
+                if ($('.down-box').height() < 51 && $('.up-box').height() < 51) {
                     $('.down-box').height("+=1");
                     $('.up-box').height("+=1");
                 }
             // down button
             } else if (map[40]) {
                 event.preventDefault();
-                if ($('.down-box').height() < 60) {
+                if ($('.down-box').height() < 51) {
                     $('.down-box').height("+=2");
                 }
             // up button
             }
             else if (map[38]) {
                 event.preventDefault();
-                if ($('.up-box').height() < 60) {
+                if ($('.up-box').height() < 52) {
                     $('.up-box').height("+=2");
                 }
             }
 
             if (map[37] && map[39]) {
                 event.preventDefault();
-                if ($('.left-box').width() < 60 && $('.right-box').width() < 60) {
+                if ($('.left-box').width() < 51 && $('.right-box').width() < 51) {
                     $('.left-box').width("+=1");
                     $('.right-box').width("+=1");
                 }
             // left button
             } else if (map[37]) {
                 event.preventDefault();
-                if ($('.left-box').width() < 60) {
+                if ($('.left-box').width() < 52) {
                     $('.left-box').width("+=2");
                 }
             // right button
             } else if (map[39]) {
                 event.preventDefault();
-                if ($('.right-box').width() < 60) {
+                if ($('.right-box').width() < 51) {
                     $('.right-box').width("+=2");
                 }
             }
