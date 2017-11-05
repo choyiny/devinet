@@ -46,7 +46,6 @@
 		top: 121px;
     left: 65px;
 		width: 127px;
-		background-color: #0AA2A8;
 	}
 
 	.box.level5 {
@@ -111,10 +110,6 @@
 		border: 4px solid green;
 	}
 
-	.box .complete {
-		background-color: white;
-	}
-
 </style>
 <div class="row levels">
 	<div class="col-md-2 remove-border"></div>
@@ -174,7 +169,7 @@ $('.stage').click(function() {
 });
 
 $(document).ready(function() {
-	$('button.complete').css('color', $('button.complete').css('border-color'));
+	$('button.complete').css('background-color', $('button.complete').css('border-color'));
 });
 </script>
 {% endblock js %}

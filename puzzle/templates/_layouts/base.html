@@ -11,11 +11,24 @@
       body {
         background: url(../static/puzzle/bg.jpg);
       }
+      .go-back {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+      }
+
+      .go-back button {
+        opacity: 0.6;
+        cursor: pointer;
+      }
     </style>
     {% block css %}{% endblock css %}
 </head>
 <body>
     <div class="container">
+    </div>
+    <div class="go-back">
+      <button class="back-to-main btn btn-lg btn-default">Back to Main</button>
     </div>
 </body>
 </html>
@@ -23,7 +36,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-
+<script>
+$(document).ready(function() {
+  $('.go-back .back-to-main').click(function() {
+    // loads container with home page without any changes
+    $('.container').load('/puzzle/list/');
+  });
+});
+</script>
 
 {% block js %}
 {% endblock js %}
