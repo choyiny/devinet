@@ -1,31 +1,97 @@
 <style type="text/css">
-	.card, .list-group-item {
-		background-color: #37DE46
-	}
-
-	.card-title, .card-header{
-		color: white;
-	}
 
 	.btn-primary {
 		background-color: #24912E;
 		border-color: #1F7D27;
 	}
+	.levels {
+		margin-top: 200px;
+	}
+
+	.box {
+		/*background-color: #37DE46;*/
+		opacity: 0.7;
+		border-radius: 4px;
+		position: absolute;
+	}
+
+
+	.box button {
+			width: 50px;
+	    height: 50px;
+			margin: 5px;
+			opacity: 1;
+			z-index: 10;
+	}
+
+	.box.level1 {
+		width:71px
+	}
+
+	.box.level2 {
+		width: 194px;
+		left: 65px;
+	}
+
+	.box.level3 {
+		width: 100px;
+		left: 194px;
+    top: 61px;
+	}
+
+	.box.level4 {
+		top: 121px;
+    left: 65px;
+		width: 127px;
+	}
+
+	.box.level5 {
+		top: 240px;
+	}
+
+	.box.disable {
+		background-color: grey;
+		opacity: 0.2;
+	}
+
+	.remove-border {
+		margin: 0;
+		padding: 0;
+	}
 </style>
-<div class='card text-center'>
-	<div class="card-header">
-		<h1 style="color: white;">Devinet</h1>
-  	</div>
-  	<ul class="list-group list-group-flush">
-		{% for level in levels %}
-  		<li class="list-group-item">
-  			<h4 class="card-title">{{level}}</h4>
-  			{% for stage in level.stage_set.all %}
-	      		<a href="#" class="stage btn btn-primary" id="{{stage.id}}">{{stage}}</a>
-	    	{% endfor %}
-  		</li>
-		{% endfor %}
-  	</ul>
+<div class="row levels">
+	<div class="col-md-2 remove-border"></div>
+	<div class="col-md-8 remove-border">
+			<div class="box level1">
+				<button class="btn btn-default stage" id="1"></button>
+				<button class="btn btn-default stage" id="2"></button>
+				<button class="btn btn-default stage" id="3"></button>
+			</div>
+			<div class="box level4 disable">
+				<button class="btn btn-default stage" id="4"></button>
+				<button class="btn btn-default stage" id="5"></button><br>
+				<button class="btn btn-default stage" id="6"></button>
+				<button class="btn btn-default stage" id="7"></button>
+			</div>
+			<div class="box level2">
+				<button class="btn btn-default stage" id="4"></button>
+				<button class="btn btn-default stage" id="5"></button>
+				<button class="btn btn-default stage" id="5"></button>
+			</div>
+			<div class="box level3">
+				<button class="btn btn-default stage" id="4"></button>
+				<button class="btn btn-default stage" id="5"></button>
+				<button class="btn btn-default stage" id="5"></button>
+			</div>
+			<div class="box level5">
+				<button class="btn btn-default stage" id="4"></button>
+				<button class="btn btn-default stage" id="5"></button>
+				<button class="btn btn-default stage" id="5"></button>
+				<button class="btn btn-default stage" id="5"></button>
+				<button class="btn btn-default stage" id="5"></button>
+			</div>
+	</div>
+	<div class="col-md-2 remove-border"></div>
 </div>
 {% block js %}
 <script>

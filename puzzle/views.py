@@ -2,6 +2,8 @@ from django.shortcuts import render_to_response
 from django.template import loader
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import get_object_or_404
+
 
 from .models import Level
 
@@ -33,6 +35,8 @@ def view_home(request):
 
 def view_list(request):
     template = 'list.html'
-    context = {'levels': Level.objects.all()}
+    context = {'level1': get_object_or_404(Level, pk=1),
+               'level2': get_object_or_404(Level, pk=2),
+               'level3': get_object_or_404(Level, pk=3)}
 
     return render_to_response(template, context=context)
