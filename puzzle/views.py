@@ -12,17 +12,12 @@ from puzzle.models import Stage, UserStage, UserLevel
 @csrf_exempt
 def view_stage(request):
     """
-    Renders the template for a particular stage given a stage_id,
-    if the user has the required permissions for it
+    Renders the template for a particular stage given a stage_id
     """
-
-    template = Stage.objects.get(pk=request.POST['pk']).get_stage_url()
+    stage = Stage.objects.get(pk=request.POST['pk'])
+    template = stage.get_stage_url()
     context = {'pkid':request.POST['pk']}
-    # render the stage if user has permission
-    if request.POST['pk'] in request.user.user_level_set:
-        return render_to_response(template, context=context)
-    else:
-        raise Http403("You cannot access this stage yet")
+    return render_to_response(template, context=context)
 
 
 def index(request):
@@ -30,17 +25,33 @@ def index(request):
     context = {}
     return HttpResponse(template.render(context, request))
 
+
 def view_home(request):
     template = 'home.html'
     context = {}
 
     return render_to_response(template, context=context)
 
+
 @csrf_exempt
 def view_list(request):
+    """
+    Renders the list of challenges to the user.
+    """
+    user = request.user
     # give user access to level 1 if they cannot
-    if len(request.user.level_set.all()) == 0:
-        UserLevel.objects.create(user=request.user, level=Level.objects.get(pk=1))
+    if len(user.level_set.all()) == 0:
+        UserLevel.objects.create(user=user, level=Level.objects.get(pk=1))
+
+    # hardcoding unlocking new levels
+
+    # level 2 completed -> unlock level 3
+    if _completed_stages(user, 2) >= 2:
+        _grant_level(user, 3)
+    # level 1 completed -> unlock level 2
+    elif _completed_stages(user, 1) >= 3:
+        _grant_level(user, 2)
+
 
     template = 'list.html'
     user = request.user
@@ -55,12 +66,39 @@ def view_list(request):
 
     return render_to_response(template, context=context)
 
+
 @csrf_exempt
 def setStageStatus(request):
-    context_instance=RequestContext(request)
+    context_instance = RequestContext(request)
     pkid = request.POST['pkid']
     user = request.user
     stage = Stage.objects.get(pk=pkid)
-    UserStage.objects.create(user=user, stage=stage)
+    try:
+        UserStage.objects.all.get(user=user, stage=stage)
+    except:
+        UserStage.objects.create(user=user, stage=stage)
 
     return view_list(request)
+
+
+def _completed_stages(user, level_id):
+    """
+    Returns number of completed stages in a level given a level id and a
+    user
+    """
+    levels_of_completed_stage = [x.level_id for x in user.stage_set.all()]
+
+    return levels_of_completed_stage.count(level_id)
+
+
+def _has_level(user, level_id):
+    for level in user.level_set.all():
+        if level.id == level_id:
+            return True
+    return False
+
+
+def _grant_level(user, level_id):
+    if not _has_level(user, level_id):
+        UserLevel.objects.create(user=user,
+                                 level=Level.objects.get(pk=level_id))

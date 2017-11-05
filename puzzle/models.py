@@ -34,6 +34,9 @@ class UserLevel(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     level = models.ForeignKey(Level, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.user.username + " -> Level " + str(self.level.id)
+
 
 class UserStage(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
