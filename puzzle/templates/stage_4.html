@@ -46,6 +46,8 @@ function loop() {
   if ((width > 490 && width < 510) && (height > 510 && height < 520)) {
     $('.circle').css('background-color', 'green');
     $('.circle').addClass('success');
+    
+    $('.container').load('/puzzle/list/');
 
     $('.success').click(function() {
       $('.container').load('/puzzle/list/');
