@@ -1,13 +1,12 @@
 from django.shortcuts import render_to_response
-from django.template import loader
+from django.template import loader, RequestContext
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import get_object_or_404
 
-
 from .models import Level
 
-from puzzle.models import Stage
+from puzzle.models import Stage, UserStage
 
 
 @csrf_exempt
@@ -18,7 +17,7 @@ def view_stage(request):
     """
 
     template = Stage.objects.get(pk=request.POST['pk']).get_stage_url()
-    context = {}
+    context = {'pkid':request.POST['pk']}
     return render_to_response(template, context=context)
 
 
@@ -33,6 +32,7 @@ def view_home(request):
 
     return render_to_response(template, context=context)
 
+@csrf_exempt
 def view_list(request):
     template = 'list.html'
     user = request.user
@@ -46,3 +46,13 @@ def view_list(request):
                }
 
     return render_to_response(template, context=context)
+
+@csrf_exempt
+def setStageStatus(request):
+    context_instance=RequestContext(request)
+    pkid = request.POST['pkid']
+    user = request.user
+    stage = Stage.objects.get(pk=pkid)
+    UserStage.objects.create(user=user, stage=stage)
+
+    return view_list(request)

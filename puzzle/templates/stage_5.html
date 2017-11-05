@@ -46,7 +46,7 @@
 
     $('.success').click(function() {
       if (completed) {
-        $('.container').load('/puzzle/list/');
+        $('.container').load('/puzzle/stage/stagecomplete/', {'pkid':{{pkid}}});
       }
     });
 

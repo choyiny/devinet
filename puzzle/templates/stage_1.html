@@ -117,7 +117,14 @@ $(document).ready(function() {
         if ($('.down-box').height() >= 51 && $('.left-box').width() >= 51 &&
             $('.up-box').height() >= 51 && $('.right-box').width() >= 51) {
             // show success hexagon
+<<<<<<< HEAD
+            $('.success').show();
+        } else {
+            // hide success hexagon
+            $('.success').hide();
+=======
             $('.success').css("background-color", "#B9CF54");
+>>>>>>> 3c423f294800136e09e338d676b4e4174fd44242
         }
     }
 });
@@ -179,7 +186,7 @@ $(document).ready(function() {
 
     $('.success').click(function() {
       if (upDownComplete && leftRightComplete) {
-        $('.container').load('/puzzle/list/');
+        $('.container').load('/puzzle/stage/stagecomplete/', {'pkid':{{pkid}}});
       }
     });
 </script>

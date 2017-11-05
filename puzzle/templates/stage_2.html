@@ -38,7 +38,7 @@ document.onkeydown = function(e) {
     $('.center button').css("background-color", "#B9CF54");
 
     $('.center button').click(function() {
-      $('.container').load('/puzzle/list/');
+      $('.container').load('/puzzle/stage/stagecomplete/', {'pkid':{{pkid}}});
     });
   }
 }
