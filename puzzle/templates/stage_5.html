@@ -30,7 +30,7 @@
 <script type="text/javascript">
   completed = false;
     $(document).ready(function() {
-      if (document.cookie.split('stage_5').length > 4) {
+      if (document.cookie.split('stage_5').length >= 2) {
         completed = true;
         $('.fa-recycle').hide();
       } else {
