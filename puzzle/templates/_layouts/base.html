@@ -23,9 +23,16 @@
         left: 300px;
       }
 
+      .login-frame a {
+        color: white;
+      }
+
       .go-back button {
         opacity: 0.6;
         cursor: pointer;
+      }
+      .fa-facebook {
+        font-size: 32px;
       }
     </style>
     {% block css %}{% endblock css %}
@@ -33,9 +40,11 @@
 <body>
     <div class="container">
     </div>
+    {% if request.user.is_authenticated %}
     <div class="login-frame">
-      <a class="btn btn-lg btn-default" href="{% url 'social:begin' 'facebook' %}">Facebook</a>
+      <a class="btn btn-lg btn-default" href="{% url 'social:begin' 'facebook' %}"><span class="fa fa-facebook"></span></a>
     </div>
+    {% endif %}
     <div class="go-back" style="display:none">
       <button class="back-to-main btn btn-lg btn-default">Back to Main</button>
     </div>
