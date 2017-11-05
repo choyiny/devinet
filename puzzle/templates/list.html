@@ -108,6 +108,38 @@
 	.box.level8 button {
 		border: 4px solid green;
 	}
+	/** complete **/
+	.box.level1 button.complete {
+		background-color: #B9CF54;
+	}
+
+	.box.level2 button.complete {
+		background-color: #93DC5C;
+	}
+
+	.box.level3 button.complete {
+		background-color: #B0B931;
+	}
+
+	.box.level4 button.complete {
+		background-color: #8CFFB9;
+	}
+
+	.box.level5 button.complete {
+		background-color: #7CE7AA;
+	}
+
+	.box.level6 button.complete {
+		background-color: green;
+	}
+
+	.box.level7 button.complete {
+		background-color: green;
+	}
+
+	.box.level8 button.complete {
+		background-color: green;
+	}
 
 </style>
 <div class="row levels">
@@ -168,10 +200,6 @@ $('.stage').click(function() {
 		});
 
 	}
-});
-
-$(document).ready(function() {
-	$('button.complete').css('background-color', $('button.complete').css('border-color'));
 });
 </script>
 {% endblock js %}
