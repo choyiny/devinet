@@ -33,13 +33,11 @@
       if (document.cookie.split('stage_5').length > 4) {
         completed = true;
         $('.fa-recycle').hide();
-        $('.container').load('/puzzle/list/');
       } else {
         completed = false;
       }
 
       $('.fa-recycle').click(function() {
-        console.log("hi");
         var d = new Date();
         d = d.setMinutes(d.getMinutes() + 0.5);
           document.cookie = 'stage_5' + Date.now() + '=;expires=+'+ d +'; path=/';
