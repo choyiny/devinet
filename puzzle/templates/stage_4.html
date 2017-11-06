@@ -39,7 +39,7 @@
 <div class="box2"></div>
 <button class="success4"></button>
 <script>
-var completed = false;
+var completed4 = false;
 
 loop();
 function loop() {
@@ -49,16 +49,16 @@ function loop() {
   var height = $(window).height();
   if ((width > 490 && width < 510) && (height > 510 && height < 520)) {
     $('.success4').css('background-color', '#93DC5C');
-    completed = true;
+    completed4 = true;
   }
   else {
     $('.success4').css('background-color', 'transparent');
-    completed = false;
+    completed4 = false;
   }
 }
 
 $('.success4').click(function() {
-  if (completed) {
+  if (completed4) {
     $('.container').load('/puzzle/stage/stagecomplete/', {'pkid':{{pkid}}});
   }
 });

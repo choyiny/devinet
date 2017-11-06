@@ -49,11 +49,11 @@
 </style>
 <div class="focusArea">
 	<div class="box centered"></div>
-	<div class="progress centered"></div>
+	<div class="progress centered" style="display:none"></div>
 	<div class='success7 centered'></div>
 </div>
 <script>
-var completed = false;
+var completed7 = false;
 $(document).ready(function() {
 	var maxLength = $('.box').width();
 	var length = 0
@@ -89,7 +89,7 @@ $(document).ready(function() {
 
     // complete challenge
     function finish() {
-    	completed = true;
+    	completed7 = true;
     	$('.success7').css({
 				backgroundColor: '#63A824'
 			});
@@ -99,7 +99,7 @@ $(document).ready(function() {
 </script>
 <script type="text/javascript">
 $('.success7').click(function() {
-	if (completed) {
+	if (completed7) {
 		$('.container').load('/puzzle/stage/stagecomplete/', {'pkid':{{pkid}}});
 		$('.success7').css({
     		backgroundColor: '#B9CF54'

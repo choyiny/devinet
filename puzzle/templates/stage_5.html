@@ -28,16 +28,16 @@
   <span class="fa fa-recycle"></span>
 </div>
 <script type="text/javascript">
-  completed = false;
+  completed5 = false;
     $(document).ready(function() {
       if (document.cookie.split('stage_5').length >= 2) {
-        completed = true;
+        completed5 = true;
         $('.fa-recycle').hide();
         $('.success5').css({
           backgroundColor: '#93DC5C'}
           );
       } else {
-        completed = false;
+        completed5 = false;
       }
 
       $('.fa-recycle').click(function() {
@@ -48,7 +48,7 @@
     });
 
     $('.success5').click(function() {
-      if (completed) {
+      if (completed5) {
         $('.container').load('/puzzle/stage/stagecomplete/', {'pkid':{{pkid}}});
       }
     });

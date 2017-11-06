@@ -59,7 +59,7 @@
 	<div class='success3 centered'></div>
 </div>
 <script>
-var completed = true;
+var completed3 = true;
 $(document).ready(function() {
 	var maxLength = $('.box').width();
 	var length = 0
@@ -75,7 +75,7 @@ $(document).ready(function() {
 			//reset on mouse move
 			$('.container').mousemove(function(e) {
 				length = 0;
-				completed = false;
+				completed3 = false;
 				$('.success3').css('background-color', 'transparent');
 			});
 		} else {
@@ -91,14 +91,14 @@ $(document).ready(function() {
     // complete challenge
     function finish() {
 			$('.success3').css('background-color', '#B9CF54');
-			completed = true;
+			completed3 = true;
     }
     loop()
 });
 </script>
 <script type="text/javascript">
 $('.success3').click(function() {
-	if (completed) {
+	if (completed3) {
 		$('.container').load('/puzzle/stage/stagecomplete/', {'pkid':{{pkid}}});
 	}
 });

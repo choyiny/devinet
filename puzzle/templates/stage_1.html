@@ -42,7 +42,7 @@
 <span class="success1"></span>
 <span class="green"></span>
 <script type="text/javascript">
-  var completed = false;
+  var completed1 = false;
   var minimized = false;
   window.addEventListener('blur', function(){
       minimized = true;
@@ -50,13 +50,13 @@
 
   window.addEventListener('focus', function(){
      if (minimized) {
-       completed = true;
+       completed1 = true;
        $('.success1').css('background-color', '#93DC5C');
      }
   }, false);
 
   $('.success1').click(function() {
-    if (completed) {
+    if (completed1) {
       $('.container').load('/puzzle/stage/stagecomplete/', {'pkid':{{pkid}}});
     }
   });
