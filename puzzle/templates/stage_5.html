@@ -4,7 +4,7 @@
     cursor: wait;
     z-index: 1000;
   }
-  .success {
+  .success5 {
     position: absolute;
     width: 50px;
     height: 50px;
@@ -23,7 +23,7 @@
   }
 
 </style>
-<button class="success"></button>
+<button class="success5"></button>
 <div class="center">
   <span class="fa fa-recycle"></span>
 </div>
@@ -33,7 +33,7 @@
       if (document.cookie.split('stage_5').length >= 2) {
         completed = true;
         $('.fa-recycle').hide();
-        $('.success').css({
+        $('.success5').css({
           backgroundColor: '#93DC5C'}
           );
       } else {
@@ -47,7 +47,7 @@
       });
     });
 
-    $('.success').click(function() {
+    $('.success5').click(function() {
       if (completed) {
         $('.container').load('/puzzle/stage/stagecomplete/', {'pkid':{{pkid}}});
       }

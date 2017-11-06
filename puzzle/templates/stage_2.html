@@ -1,5 +1,5 @@
 <style>
-.success {
+.success2 {
     position: absolute;
     left: 50%;
     top: 60%;
@@ -15,7 +15,7 @@
 }
 </style>
 
-<span class="success"></span>
+<span class="success2"></span>
 <div class="center">
   <i class="fa fa-wifi" aria-hidden="true" style="color: #b9b9b9"></i>
 </div>
@@ -26,20 +26,20 @@ var completed = false;
 window.addEventListener("offline", offlineButton);
 
 function offlineButton() {
-  $('.success').show();
-  $('.success').css('color', '#464646')
+  $('.success2').show();
+  $('.success2').css('color', '#464646')
   $('.center i').css('color', '#464646');
 
   window.addEventListener("online", onlineButton);
 
   function onlineButton() {
-    $('.success').css('color', '#b9b9b9');
+    $('.success2').css('color', '#b9b9b9');
     completed = true;
-    $('.success').css('background-color', '#B0B931');
+    $('.success2').css('background-color', '#B0B931');
   }
 }
 
-$('.success').click(function() {
+$('.success2').click(function() {
   if (completed) {
     $('.container').load('/puzzle/stage/stagecomplete/', {'pkid':{{pkid}}});
   }

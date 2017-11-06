@@ -6,7 +6,7 @@
 	transform: translate(-50%, -50%);
 }
 
-  .success {
+  .success7 {
     position: absolute;
     background-color: #B9CF54;
     height: 50px;
@@ -50,7 +50,7 @@
 <div class="focusArea">
 	<div class="box centered"></div>
 	<div class="progress centered"></div>
-	<div class='success centered'></div>
+	<div class='success7 centered'></div>
 </div>
 <script>
 var completed = false;
@@ -64,7 +64,7 @@ $(document).ready(function() {
 			if (length > 50 ){
 				length -= 5;
 			}
-			$('.success').css({
+			$('.success7').css({
 				width: length,
 				height: length,
 				borderRadius: length,
@@ -90,7 +90,7 @@ $(document).ready(function() {
     // complete challenge
     function finish() {
     	completed = true;
-    	$('.success').css({
+    	$('.success7').css({
 				backgroundColor: '#63A824'
 			});
     }
@@ -98,10 +98,10 @@ $(document).ready(function() {
 });
 </script>
 <script type="text/javascript">
-$('.success').click(function() {
+$('.success7').click(function() {
 	if (completed) {
 		$('.container').load('/puzzle/stage/stagecomplete/', {'pkid':{{pkid}}});
-		$('.success').css({
+		$('.success7').css({
     		backgroundColor: '#B9CF54'
     	});
 	}

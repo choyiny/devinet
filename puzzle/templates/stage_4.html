@@ -1,5 +1,5 @@
 <style>
-.success {
+.success4 {
   width: 50px;
   height: 50px;
   border-radius: 50px;
@@ -37,7 +37,7 @@
 </style>
 <div class="box1"></div>
 <div class="box2"></div>
-<button class="success"></button>
+<button class="success4"></button>
 <script>
 var completed = false;
 
@@ -48,16 +48,16 @@ function loop() {
   var width = $(window).width();
   var height = $(window).height();
   if ((width > 490 && width < 510) && (height > 510 && height < 520)) {
-    $('.success').css('background-color', '#93DC5C');
+    $('.success4').css('background-color', '#93DC5C');
     completed = true;
   }
   else {
-    $('.success').css('background-color', 'transparent');
+    $('.success4').css('background-color', 'transparent');
     completed = false;
   }
 }
 
-$('.success').click(function() {
+$('.success4').click(function() {
   if (completed) {
     $('.container').load('/puzzle/stage/stagecomplete/', {'pkid':{{pkid}}});
   }
