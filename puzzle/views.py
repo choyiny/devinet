@@ -45,6 +45,9 @@ def view_list(request):
 
     # hardcoding unlocking new levels
 
+    # level 4 completed 3 -> unlock level 5
+    if _completed_stages(user, 4) >= 4:
+        _grant_level(user, 5)
     # level 3 completed 2 -> unlock level 4
     if _completed_stages(user, 3) >= 2:
         _grant_level(user, 4)

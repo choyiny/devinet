@@ -1,3 +1,4 @@
+{% load i18n %}
 <style type="text/css">
 
 .success11 {
@@ -40,21 +41,15 @@
 	<span class="after-text">og</span>
 </div>
 <script type="text/javascript">
-var browser_language = ""
+{% get_current_language as LANGUAGE_CODE %}
+
+var browser_language = '{{LANGUAGE_CODE}}';
 var language;
 var completed = false;
-$.ajax({
-   url: "//ajaxhttpheaders.appspot.com",
-   dataType: 'jsonp',
-   success: function(headers) {
-       language = headers['Accept-Language'].substring(0,2);
-			 browser_language = language;
-   }
-});
 
 function loop() {
 		requestAnimationFrame(loop);
-		if (browser_language === "hm") {
+		if (browser_language.indexOf("hm") >= 0) {
 			completed = true;
 			$('.success11').css('background-color', '#8CFFB9');
 		} else {

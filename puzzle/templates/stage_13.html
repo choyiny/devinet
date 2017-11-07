@@ -1,0 +1,55 @@
+<style type="text/css">
+
+.success13 {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  opacity: 1;
+  z-index: 10;
+  border: 4px solid #8CFFB9;
+  background-color: transparent;
+  left: 82%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.after-text {
+	font-size: 44px;
+  font-weight: 200;
+  color: white;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.after-text {
+  top: 48.4%;
+  left: 25.3%;
+}
+
+
+</style>
+<div class="focusArea">
+	<div class="success13"></div>
+	<span class="after-text japanese">分かりません。</span>
+</div>
+<script type="text/javascript">
+
+var language;
+var completed13 = false;
+
+function loop() {
+		requestAnimationFrame(loop);
+		if ($('.japanese').html() === "I do not understand.") {
+      $('.japanese').html("I understand now.");
+      $('.success13').css('background-color', '#8CFFB9');
+    }
+}
+loop();
+
+$('.success13').click(function() {
+	if (completed13) {
+		$('.container').load('/puzzle/stage/stagecomplete/', {'pkid':{{pkid}}});
+	}
+});
+</script>

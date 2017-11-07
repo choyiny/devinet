@@ -33,14 +33,23 @@
 <script type="text/javascript">
 var completed12 = false;
 $(document).ready(function() {
+  function loop() {
+  		requestAnimationFrame(loop);
+      var today = new Date();
+      var year = today.getFullYear();
+    	if (og_year == year.toString()) {
+        completed12 = true;
+        $('.success12').css('background-color', '#8CFFB9');
+      }
+  }
+  loop();
+
   var og_year = parseInt($('.before-text').html());
   $('.before-text').html(parseInt(og_year) - 1);
 });
 
 $('.success12').click(function() {
-  var today = new Date();
-  var year = today.getFullYear();
-	if (og_year === year) {
+	if (completed12) {
 		$('.container').load('/puzzle/stage/stagecomplete/', {'pkid':{{pkid}}});
 	}
 });
