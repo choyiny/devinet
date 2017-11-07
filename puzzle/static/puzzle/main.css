@@ -3,6 +3,10 @@ body {
     background-image: url(../static/puzzle/bg.jpg);
 }
 
+button {
+  outline: 0 !important;
+}
+
 .center {
   top: 50%;
   left: 50%;
