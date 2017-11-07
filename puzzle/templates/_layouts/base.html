@@ -12,11 +12,6 @@
       body {
         background: url(../static/puzzle/bg.jpg);
       }
-      .go-back {
-        position: absolute;
-        bottom: 20px;
-        left: 20px;
-      }
 
       .login-frame {
         position: absolute;
@@ -28,12 +23,53 @@
         color: white;
       }
 
+      .go-back {
+        position: absolute;
+        left: 5px;
+        bottom: 5px;
+      }
+
+      .right {
+        position: absolute;
+        right: 10px;
+        bottom: 5px;
+        font-size: 20px;
+      }
+
       .go-back button {
         opacity: 0.6;
         cursor: pointer;
       }
       .fa-facebook {
         font-size: 32px;
+      }
+
+      .coins {
+        display: inline-block;
+        color: gold;
+      }
+
+      .coins .fa {
+        margin-right: 7px;
+      }
+
+      .hint {
+        color: #a5a5a5;
+        display: inline-block
+      }
+
+      .btn-transparent-grey {
+        background-color: transparent;
+        border: none;
+        font-size: 20px;
+        color: #a5a5a5;
+      }
+
+      .btn-transparent-gold {
+        background-color: transparent;
+        border: none;
+        font-size: 20px;
+        color: #b39d27;
       }
     </style>
     {% block css %}{% endblock css %}
@@ -48,6 +84,10 @@
     {% endif %}
     <div class="go-back" style="display:none">
       <button class="back-to-main btn btn-lg btn-default">Back to Main</button>
+    </div>
+    <div class="right">
+      <div class="hint"><button class="btn btn-transparent-grey"><span class="fa fa-question-circle"></span></button></div>
+      <div class="coins"><button class="btn btn-transparent-gold"><span class="fa fa-money"></span><span class="coin-amount">{{ request.user.wallet.get_coins }}</span></div>
     </div>
 </body>
 </html>

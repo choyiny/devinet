@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404
 
 from .models import Level
 
-from puzzle.models import Stage, UserStage, UserLevel
+from puzzle.models import Stage, UserStage, UserLevel, Wallet
 
 
 @csrf_exempt
@@ -43,10 +43,16 @@ def view_list(request):
     if len(user.level_set.all()) == 0:
         UserLevel.objects.create(user=user, level=Level.objects.get(pk=1))
 
-    # hardcoding unlocking new levels
+    # give user a wallet if they do not yet have one
+    try:
+        wallet = user.wallet
+    except:
+        wallet = Wallet.objects.create(user=user, coins=3)
+
+    ### Unlocking new levels ###
 
     # level 4 completed 3 -> unlock level 5
-    if _completed_stages(user, 4) >= 4:
+    if _completed_stages(user, 4) >= 2:
         _grant_level(user, 5)
     # level 3 completed 2 -> unlock level 4
     if _completed_stages(user, 3) >= 2:
@@ -54,6 +60,9 @@ def view_list(request):
     # level 2 completed all -> unlock level 3
     elif _completed_stages(user, 2) >= 2:
         _grant_level(user, 3)
+
+        # give them 1 coin
+        user.wallet.add_coins(1)
     # level 1 completed all -> unlock level 2
     elif _completed_stages(user, 1) >= 3:
         _grant_level(user, 2)

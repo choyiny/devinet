@@ -20,6 +20,9 @@ class Stage(models.Model):
     # a stage has 1 level
     level = models.ForeignKey(Level)
 
+    # stage has a hint
+    hint = models.CharField(max_length=255, default="There is not hint for this level.");
+
     def get_stage_url(self):
         return "stage_{}.html".format(self.id)
 
@@ -36,6 +39,23 @@ class UserLevel(models.Model):
 
     def __str__(self):
         return self.user.username + " -> Level " + str(self.level.id)
+
+
+class Wallet(models.Model):
+    user = models.OneToOneField(User)
+    coins = models.IntegerField(default=3)
+
+    def __str__(self):
+        return self.user.username + ": " + str(self.coins)
+
+    def get_coins(self):
+        return self.coins
+
+    def add_coins(self, coin):
+        self.coins += coin
+
+    def remove_coins(self, coin):
+        self.coins -= coin
 
 
 class UserStage(models.Model):

@@ -1,56 +1,38 @@
-<style type="text/css">
-
+<style>
 .success13 {
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  border-radius: 50px;
-  opacity: 1;
-  z-index: 10;
-  border: 4px solid #8CFFB9;
-  background-color: transparent;
-  left: 82%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+    position: absolute;
+        top: 50%;
+    transform: translate(-50%, -60%);
+    height: 50px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    opacity: 1;
+    z-index: 10;
+    border: 4px solid #8CFFB9;
+    background-color: transparent;
 }
-
-.after-text {
-	font-size: 44px;
-  font-weight: 200;
-  color: white;
-  position: absolute;
-  transform: translate(-50%, -50%);
+.success13 {
+  left: 40%;
 }
-
-.after-text {
-  top: 48.4%;
-  left: 25.3%;
+.copy {
+  left: 60%;
 }
-
-
 </style>
-<div class="focusArea">
-	<div class="success13"></div>
-	<span class="after-text japanese">分かりません。</span>
-</div>
-<script type="text/javascript">
 
-var language;
+<span class="success13"></span>
+<span class="success13 copy"></span>
+
+<script>
 var completed13 = false;
-
-function loop() {
-		requestAnimationFrame(loop);
-		if ($('.japanese').text() === "I do not understand.") {
-      $('.japanese').text("I understand now.");
-      $('.success13').css('background-color', '#8CFFB9');
-      completed13 = true;
-    }
-}
-loop();
+window.matchMedia("print").addListener(function() {
+  completed13 = true;
+  $('.success13').css('background-color', '#8CFFB9');
+});
 
 $('.success13').click(function() {
-	if (completed13) {
-		$('.container').load('/puzzle/stage/stagecomplete/', {'pkid':{{pkid}}});
-	}
+  if (completed14) {
+    $('.container').load('/puzzle/stage/stagecomplete/', {'pkid':{{pkid}}});
+  }
 });
 </script>
