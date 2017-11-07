@@ -22,4 +22,4 @@ urlpatterns = [
     url(r'^puzzle/', include('puzzle.urls')),
     url(r'^', include('puzzle.urls')),
     url(r'^oauth/', include('social_django.urls', namespace='social')),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]
