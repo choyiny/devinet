@@ -40,8 +40,8 @@ var completed13 = false;
 
 function loop() {
 		requestAnimationFrame(loop);
-		if ($('.japanese').html() === "I do not understand.") {
-      $('.japanese').html("I understand now.");
+		if ($('.japanese').text() === "I do not understand.") {
+      $('.japanese').text("I understand now.");
       $('.success13').css('background-color', '#8CFFB9');
     }
 }
