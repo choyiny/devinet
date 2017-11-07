@@ -37,7 +37,7 @@ $(document).ready(function() {
   		requestAnimationFrame(loop);
       var today = new Date();
       var year = today.getFullYear();
-    	if (og_year == year.toString()) {
+    	if ((parseInt(og_year) - 1).toString() == year.toString()) {
         completed12 = true;
         $('.success12').css('background-color', '#8CFFB9');
       }
