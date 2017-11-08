@@ -33,12 +33,26 @@
     top: 50%;
     transform: translate(-50%, -50%);
   }
+
+  .success img {
+    width:290px;
+    pointer-events: none;
+  }
+
+  .tagline {
+    color: #4a584b;
+    font-size: 22.4px;
+    font-family: 'Libre Barcode 39 Text', cursive;
+  }
 </style>
 {% load static %}
 <div class="focusArea">
   <div class="mouse"></div>
   <div class="answer"></div>
-  <span class="success"><img style="width:300px;pointer-events: none;" src="{% static "puzzle/devniet.png" %}"></span>
+  <div class="success">
+    <img class="logo" src="{% static "puzzle/devniet.png" %}">
+    <h3 class="tagline">Think outside the browser</h3>
+  </span>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 

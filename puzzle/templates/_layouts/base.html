@@ -7,6 +7,7 @@
     <link rel="shortcut icon" type="image/png" href="{{STATIC_URL}}/favicon.png"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Barcode+39+Text" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'puzzle/main.css' %}" />
     <style>
       body {
@@ -29,13 +30,6 @@
         bottom: 5px;
       }
 
-      .right {
-        position: absolute;
-        right: 10px;
-        bottom: 5px;
-        font-size: 20px;
-      }
-
       .go-back button {
         opacity: 0.6;
         cursor: pointer;
@@ -43,39 +37,11 @@
       .fa-facebook {
         font-size: 32px;
       }
-
-      .coins {
-        display: inline-block;
-        color: gold;
-      }
-
-      .coins .fa {
-        margin-right: 7px;
-      }
-
-      .hint {
-        color: #a5a5a5;
-        display: inline-block
-      }
-
-      .btn-transparent-grey {
-        background-color: transparent;
-        border: none;
-        font-size: 20px;
-        color: #a5a5a5;
-      }
-
-      .btn-transparent-gold {
-        background-color: transparent;
-        border: none;
-        font-size: 20px;
-        color: #b39d27;
-      }
     </style>
     {% block css %}{% endblock css %}
 </head>
 <body>
-    <div class="container">
+    <div class="container disable_text_highlighting">
     </div>
     {% if not request.user.is_authenticated %}
     <div class="login-frame">
@@ -84,10 +50,6 @@
     {% endif %}
     <div class="go-back" style="display:none">
       <button class="back-to-main btn btn-lg btn-default">Back to Main</button>
-    </div>
-    <div class="right">
-      <div class="hint"><button class="btn btn-transparent-grey"><span class="fa fa-question-circle"></span></button></div>
-      <div class="coins"><button class="btn btn-transparent-gold"><span class="fa fa-money"></span><span class="coin-amount">{{ request.user.wallet.get_coins }}</span></div>
     </div>
 </body>
 </html>

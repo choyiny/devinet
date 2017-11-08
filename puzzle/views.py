@@ -30,6 +30,15 @@ def view_home(request):
     template = 'home.html'
     context = {}
 
+    user = request.user
+
+    # give user a wallet if they do not yet have one
+    try:
+        wallet = user.wallet
+    except:
+        wallet = Wallet.objects.create(user=user, coins=3)
+
+
     return render_to_response(template, context=context)
 
 
@@ -42,12 +51,6 @@ def view_list(request):
     # give user access to level 1 if they cannot
     if len(user.level_set.all()) == 0:
         UserLevel.objects.create(user=user, level=Level.objects.get(pk=1))
-
-    # give user a wallet if they do not yet have one
-    try:
-        wallet = user.wallet
-    except:
-        wallet = Wallet.objects.create(user=user, coins=3)
 
     ### Unlocking new levels ###
 
