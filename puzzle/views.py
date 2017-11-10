@@ -1,6 +1,6 @@
 from django.shortcuts import render_to_response
 from django.template import loader, RequestContext
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import get_object_or_404
 
@@ -14,9 +14,19 @@ def view_stage(request):
     """
     Renders the template for a particular stage given a stage_id
     """
+    user = request.user
     stage = Stage.objects.get(pk=request.POST['pk'])
     template = stage.get_stage_url()
     context = {'pkid':request.POST['pk']}
+
+    # if user has access to the level of the stages
+    level_of_stage = stage.get_level()
+    try:
+        UserLevel.objects.get(user=request.user, level=level_of_stage)
+    except:
+        raise Http404("Puzzle cannot be accessed.")
+
+    # return the stage to user
     return render_to_response(template, context=context)
 
 
@@ -92,7 +102,7 @@ def setStageStatus(request):
     user = request.user
     stage = Stage.objects.get(pk=pkid)
     try:
-        UserStage.objects.all.get(user=user, stage=stage)
+        UserStage.objects.get(user=user, stage=stage)
     except:
         UserStage.objects.create(user=user, stage=stage)
 

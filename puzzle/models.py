@@ -26,6 +26,10 @@ class Stage(models.Model):
     def get_stage_url(self):
         return "stage_{}.html".format(self.id)
 
+    def get_level(self):
+        """ Returns the level the stage is part of. """
+        return self.level
+
     def __str__(self):
         """
         String representation for a stage. Intended for admin site.
