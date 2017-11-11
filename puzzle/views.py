@@ -58,7 +58,10 @@ def view_list(request):
     Renders the list of challenges to the user.
     """
     user = request.user
-    # give user access to level 1 if they cannot
+    # if player is new
+    is_new = len(user.stage_set.all()) == 0
+
+    # if player does not have access to level 1
     if len(user.level_set.all()) == 0:
         UserLevel.objects.create(user=user, level=Level.objects.get(pk=1))
 
@@ -85,9 +88,7 @@ def view_list(request):
     user = request.user
     unlocked_levels = [x.id for x in user.level_set.all()]
     completed_stages = [x.id for x in user.stage_set.all()]
-    context = {'level1': get_object_or_404(Level, pk=1),
-               'level2': get_object_or_404(Level, pk=2),
-               'level3': get_object_or_404(Level, pk=3),
+    context = {'first_time': is_new,
                'unlocked_levels': unlocked_levels,
                'completed_stages': completed_stages
                }

@@ -15,6 +15,20 @@
 		position: absolute;
 	}
 
+	#how-to-play button {
+		width: 50px;
+		height: 50px;
+		margin: 5px;
+		border-radius: 50px;
+		opacity: 1;
+		z-index: 10;
+		border: 4px solid #B9CF54;
+	}
+
+	#how-to-play button.complete {
+		background-color: #B9CF54;
+	}
+
 	.box button {
 			width: 50px;
 	    height: 50px;
@@ -189,23 +203,42 @@
 	<div class="col-md-2 remove-border"></div>
 </div>
 <div id="how-to-play" class="modal fade">
-  <div class="modal-dialog">
+  <div class="modal-dialog" style="top: 20%">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">How to play?</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
       </div>
       <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
+        <p>Start a challenge by clicking on a lit-up hollow circle. Your goal is to click on the circle in the challenge, like the one below.</p>
+				<div class="tutorial-button" style="padding-left: 191px">
+					<button class="btn btn-default"></button>
+				</div>
+				<p>You might be curious as to why it isn't clickable yet - it's because it isn't filled up. To light the circle up, just press the ENTER key.</p>
+				<p>Think out of the browser.</p>
+			</div>
     </div>
   </div>
 </div>
 {% block js %}
 <script>
 $('.go-back').hide();
+
+{% if first_time %}
+$('#play-modal-button').click();
+$(document).keydown(function(e) {
+	if (e.which == 13) {
+		$('#how-to-play button').addClass("complete");
+		$('#how-to-play button').attr('data-dismiss', 'modal');
+	}
+});
+
+$(document).keyup(function(e) {
+	if (e.which == 13) {
+		$('#how-to-play button').removeClass("complete");
+		$('#how-to-play button').removeAttr('data-dismiss');
+	}
+});
+{% endif %}
 // loads the stage id
 $('.stage').click(function() {
 	if (!($(this).parent().hasClass("disable"))) {
