@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import raven
 from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -44,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'raven.contrib.django.raven_compat',
     'social_django',
     'puzzle',
 ]
@@ -141,6 +143,11 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+# Error Tracking
+RAVEN_CONFIG = {
+    'dsn': 'https://cf95302ee65d4b9bb4c8fe0138a97e14:{}@sentry.io/885973'.format(config('RAVEN_SECRET_KEY')),
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
