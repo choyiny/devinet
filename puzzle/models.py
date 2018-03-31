@@ -18,7 +18,7 @@ class Stage(models.Model):
     """ Model for a stage of a level """
     users = models.ManyToManyField(User, through='UserStage')
     # a stage has 1 level
-    level = models.ForeignKey(Level)
+    level = models.ForeignKey(Level, on_delete=models.CASCADE)
 
     # stage has a hint
     hint = models.CharField(max_length=255, default="There is not hint for this level.");
@@ -46,7 +46,7 @@ class UserLevel(models.Model):
 
 
 class Wallet(models.Model):
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     coins = models.IntegerField(default=3)
 
     def __str__(self):
