@@ -8,3 +8,6 @@ before_script:
 script:
   - python manage.py test
 sudo: false
+env:
+  - SOCIAL_AUTH_FACEBOOK_KEY=111
+  - SOCIAL_AUTH_FACEBOOK_SECRET=111
