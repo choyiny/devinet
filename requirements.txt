@@ -2,3 +2,5 @@ django
 social-auth-app-django
 python-decouple
 whitenoise
+dj-database-url
+psycopg2
