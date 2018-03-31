@@ -22,9 +22,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '70cxtfoj!3s!*4q*IJOFSD0m-6ht@_bhh2@@c9^n-ok36x^ktf8+622n'
+if 'SECRET_KEY' in os.environ:
+    SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     u'devinet.choy.in',
